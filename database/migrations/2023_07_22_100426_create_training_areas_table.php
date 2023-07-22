@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('machines', function (Blueprint $table) {
+        Schema::create('training_areas', function (Blueprint $table) {
             $table->id();
-            $table->string('machine_name');
-            $table->string('img')->nullable();
+            // $table->foreignId('machine_id')->references('id')->on('machines');
+            $table->string('training_area');
+            $table->string('area_img')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('machines');
+        Schema::dropIfExists('training_areas');
     }
 };

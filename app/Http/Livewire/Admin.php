@@ -21,7 +21,7 @@ class Admin extends Component
     // ];
 
     public function UserStore() {
-        // $this->validate();
+        $this->validate();
 
         $user =  new User();
         $user->name = $this->name;

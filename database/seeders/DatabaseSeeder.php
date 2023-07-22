@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserTableSeeder::class,
+            MachineTableSeeder::class,
+            TrainingTableSeeder::class,
+            TrainingAreaTableSeeder::class,
+            MachineForTrainingAreaTableSeeder::class,
             
             // 他のSeederクラスも追加
         ]);
