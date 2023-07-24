@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('machines', function (Blueprint $table) {
             $table->id();
-            $table->string('machine_name');
+            $table->string('machine_name')->unique();
             $table->string('img')->nullable();
             $table->timestamps();
         });

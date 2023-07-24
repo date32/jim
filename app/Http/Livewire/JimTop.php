@@ -11,6 +11,7 @@ class JimTop extends Component
     public $name;
     public $pass;
     public $errorMessage;
+    public $login;
 
     protected $rules = [
         'name' => 'required|string',
@@ -20,6 +21,10 @@ class JimTop extends Component
     //     'name.required' => 'ユーザー名は必須です。',
     //     'pass.required' => 'パスワードは必須です。',
     // ];
+
+    public function mount() {
+      $this->login = Auth::user();
+    }
     
     public function login() {
         $this->validate();

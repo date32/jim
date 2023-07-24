@@ -1,5 +1,6 @@
 <div>
     <div>My JIM life</div>
+    @if($login === null) 
     <p>{{$errorMessage}}</p>
     <form wire:submit.prevent="login">
         <div>
@@ -14,4 +15,8 @@
             <button type="submit">ログイン</button>
         </div>
     </form>
+    @else
+    <livewire:header />
+    <a href="/dashboard">ダッシュボードへ</a>
+    @endif
 </div>
