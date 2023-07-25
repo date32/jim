@@ -40,6 +40,10 @@ class Admin extends Component
 
     public function UserStore()
     {
+        // このようにバリデーションは単体でもできる
+        // #ここにルールのキーを入れる　例えば下の例であれば'name'や'pass'のこと
+        // $this->validateOnly('#');
+
         $this->userError = false;
         $this->machineError = false;
         $this->areaError = false;

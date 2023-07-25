@@ -17,18 +17,9 @@
     @if($delete_yes_no)
     <div>
         <p>本当に{{ $name }}を削除しますか？</p>
-        <p class="cursor" wire:click="delete_yes">はい</p>
-        <p class="cursor" wire:click="delete_no">いいえ</p>
+        <p class="cursor mr50 ml20 dis3" wire:click="delete_yes">はい</p>
+        <p class="cursor mr50 ml20 dis3" wire:click="delete_no">いいえ</p>
     </div>
     @endif
     
 </div>
-
-<style>
-    .cursor {
-        display: inline;
-        margin: 0 50px 0 20px;
-        cursor: pointer;
-        /* background-color: aqua */
-    }
-</style>

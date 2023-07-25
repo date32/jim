@@ -6,7 +6,7 @@
             <div>ID: {{ $machine->id }}</div>
             <div class="dis">
                 <div>マシーン名: {{ $machine->machine_name }}</div>
-                <div><img src="{{ $machine->img }}" alt=""></div>
+                <div><img src="{{ $machine->img }}" alt="" class="wi1"></div>
             </div>
             <div class="dis">
                 <div>トレーニングエリア:</div>
@@ -14,7 +14,7 @@
                     @foreach ($machine->machineForTrainingAreas as $area)
                         <div class="dis">
                             <div>{{ $area->trainingArea->training_area }}</div>
-                            <div><img src="{{ $area->trainingArea->area_img }}" alt=""></div>
+                            <div><img src="{{ $area->trainingArea->area_img }}" alt="" class="wi1"></div>
                         </div>
                     @endforeach
                 </div>
@@ -46,13 +46,3 @@
 
     <div><a href="/admin/machine">戻る</a></div>
 </div>
-
-<style>
-    img {
-        width: 100px;
-    }
-
-    .dis {
-        display: flex;
-    }
-</style>

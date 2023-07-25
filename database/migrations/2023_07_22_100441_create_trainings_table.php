@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('machine_id')->references('id')->on('machines');
-            $table->time('time')->nullable();
+            $table->integer('minutes')->nullable();
+            $table->integer('seconds')->nullable();
             $table->integer('speed')->nullable();
             $table->integer('distance')->nullable();
             $table->integer('weight')->nullable();

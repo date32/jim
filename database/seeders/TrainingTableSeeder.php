@@ -16,7 +16,8 @@ class TrainingTableSeeder extends Seeder
         DB::table('trainings')->insert([
             'user_id' => '1',
             'machine_id' => '1',
-            'time' => '10:25',
+            'minutes' => '10',
+            'seconds' => '25',
             'speed' => '6',
             'distance' => '2',
             'weight' => '5',
@@ -25,7 +26,8 @@ class TrainingTableSeeder extends Seeder
         DB::table('trainings')->insert([
             'user_id' => '2',
             'machine_id' => '2',
-            'time' => '11:25',
+            'minutes' => '8',
+            'seconds' => '30',
             'speed' => '5',
             'distance' => '1',
             'weight' => '7',
@@ -34,7 +36,8 @@ class TrainingTableSeeder extends Seeder
         DB::table('trainings')->insert([
             'user_id' => '2',
             'machine_id' => '3',
-            'time' => '12:00',
+            'minutes' => '15',
+            'seconds' => '10',
             'speed' => '10',
             'distance' => '3',
             'weight' => '5',

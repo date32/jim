@@ -6,7 +6,7 @@
             <div>ID: {{ $area->id }}</div>
             <div class="dis">
                 <div>トレーニングエリア名: {{ $area->training_area }}</div>
-                <div><img src="{{ $area->area_img }}" alt=""></div>
+                <div><img src="{{ $area->area_img }}" alt="" class="wi1"></div>
             </div>
            
         </div>
@@ -28,13 +28,3 @@
 
     <div><a href="/admin/machine">戻る</a></div>
 </div>
-
-<style>
-    img {
-        width: 100px;
-    }
-
-    .dis {
-        display: flex;
-    }
-</style>
