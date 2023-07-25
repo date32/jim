@@ -5,6 +5,11 @@ use App\Http\Livewire\Admin;
 use App\Http\Livewire\Counter;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\JimTop;
+use App\Http\Livewire\MachineEdit;
+use App\Http\Livewire\MachineShow;
+use App\Http\Livewire\TrainingAreaEdit;
+use App\Http\Livewire\TrainingAreaShow;
+use App\Http\Livewire\UserShow;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +28,11 @@ Route::get('/', JimTop::class)->name('top');
 
 Route::middleware('auth')->middleware('admin')->group(function() {
     Route::get('/admin', Admin::class)->name('admin');
+    Route::get('/admin/user', UserShow::class)->name('userShow');
+    Route::get('/admin/machine', MachineShow::class)->name('machineShow');
+    Route::get('/admin/machine/edit/{id}', MachineEdit::class)->name('machineEdit');
+    Route::get('/admin/training_area', TrainingAreaShow::class)->name('trainingAreaShow');
+    Route::get('/admin/training_area/edit/{id}', TrainingAreaEdit::class)->name('trainingAreaEdit');
 });
 
 Route::middleware('auth')->group(function() {

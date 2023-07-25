@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('training_areas', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('machine_id')->references('id')->on('machines');
-            $table->string('training_area');
+            $table->string('training_area')->unique();
             $table->string('area_img')->nullable();
             $table->timestamps();
         });

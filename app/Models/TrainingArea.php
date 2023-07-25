@@ -12,4 +12,10 @@ class TrainingArea extends Model
     public function machineForTrainingAreas() {
         return $this->hasMany(MachineForTrainingArea::class);
     }
+
+    public function delete() {
+        $this->machineForTrainingAreas()->delete();
+
+        return parent::delete();
+    }
 }

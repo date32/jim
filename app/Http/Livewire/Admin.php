@@ -23,15 +23,13 @@ class Admin extends Component
     public $area_img;
     public $training_areas;
     public $selectedOptions = []; //idが入る
+    public $userError = false;
+    public $machineError = false;
+    public $areaError = false;
 
-    protected $rules = [
-        'name' => 'required|string', //uniqueルール追加すること
-        'pass' => 'required|string',
-    ];
-    // protected $messages = [
-    //     'name.required' => 'ユーザー名は必須です。',
-    //     'pass.required' => 'パスワードは必須です。',
-    // ];
+    protected $rules = [];
+    protected $messages = [];
+   
 
     public function mount()
     {
@@ -42,6 +40,26 @@ class Admin extends Component
 
     public function UserStore()
     {
+        $this->userError = false;
+        $this->machineError = false;
+        $this->areaError = false;
+        $this->rules = [];
+        $this->messages = [];
+
+        $this->rules = [
+            'name' => 'required|string|unique:users,name',
+            'pass' => 'required|string|regex:/^[a-zA-Z0-9]+$/|min:4|max:10',
+        ];
+        $this->messages = [
+            'name.required' => 'ユーザー名は必須です。',
+            'name.unique' => 'そのユーザー名は登録されています',
+            'pass.required' => 'パスワードは必須項目です',
+            'pass.regex' => 'パスワードは半角英数字のみで入力してください',
+            'pass.min' => 'パスワードは4文字以上10文字以下で入力してください',
+            'pass.max' => 'パスワードは4文字以上10文字以下で入力してください',
+        ];
+
+        $this->userError = true;
         $this->validate();
 
         // 新規ユーザー登録
@@ -55,7 +73,21 @@ class Admin extends Component
 
     public function MachineStore()
     {
-        // $this->validate();
+        $this->userError = false;
+        $this->machineError = false;
+        $this->areaError = false;
+        $this->rules = [];
+        $this->messages = [];
+
+        $this->rules = [
+            'machine_name' => 'required|string|unique:machines,machine_name'
+        ];
+        $this->messages = [
+            'machine_name.unique' => 'そのマシーン名は登録されています',
+        ];
+
+        $this->machineError = true;
+        $this->validate();
 
         // 新規マシーン登録
         $machine =  new Machine();
@@ -98,7 +130,21 @@ class Admin extends Component
 
     public function TrainingAreaStore()
     {
-        // $this->validate();
+        $this->userError = false;
+        $this->machineError = false;
+        $this->areaError = false;
+        $this->rules = [];
+        $this->messages = [];
+
+        $this->rules = [
+            'training_area' => 'required|string|unique:training_areas,training_area',
+        ];
+        $this->messages = [
+            'training_area.unique' => 'そのトレーニングエリアは登録されています',
+        ];
+
+        $this->areaError = true;
+        $this->validate();
 
         $training_area =  new TrainingArea();
         $training_area->training_area = $this->training_area;

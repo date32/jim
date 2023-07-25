@@ -47,4 +47,10 @@ class User extends Authenticatable
     public function trainings() {
         return $this->hasMany(Training::class);
     }
+
+    public function delete() {
+        $this->trainings()->delete();
+
+        return parent::delete();
+    }
 }
