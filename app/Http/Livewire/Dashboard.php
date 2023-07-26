@@ -13,6 +13,7 @@ class Dashboard extends Component
     public $machines;
     public $machineId;
     public $machineImg;
+    public $type;
     public $minutes;
     public $seconds;
     public $speed;
@@ -20,15 +21,15 @@ class Dashboard extends Component
     public $weight;
     public $count;
 
-    // protected $rules = [
-    //     'machineId' => 'required',
-    //     'minutes' => 'integer|min:0|max:59',
-    //     'seconds' => 'integer|min:0|max:59',
-    //     'speed' => 'numeric',
-    //     'distance' => 'numeric',
-    //     'weight' => 'numeric',
-    //     'count' => 'numeric',
-    // ];
+    protected $rules = [
+        'machineId' => 'required',
+        'minutes' => 'nullable|integer|min:0|max:59',
+        'seconds' => 'nullable|integer|min:0|max:59',
+        'speed' => 'nullable|numeric',
+        'distance' => 'nullable|numeric',
+        'weight' => 'nullable|numeric',
+        'count' => 'nullable|numeric',
+    ];
     protected $messages = [
         'machineId.required' => '必須項目です',
         'minutes.integer' => '0～59の数字（整数）を入力してください',
@@ -48,7 +49,7 @@ class Dashboard extends Component
     }
 
     public function trainingStore() {
-        // $this->validate();
+        $this->validate();
 
         $training = new Training();
         $training->user_id = Auth::user()->id;
@@ -69,6 +70,7 @@ class Dashboard extends Component
         
         if($this->machineId != "") {
             $this->machineImg = Machine::find($this->machineId)->img;
+            $this->type = Machine::find($this->machineId)->type;
         }else {
             $this->machineImg = null;
         }

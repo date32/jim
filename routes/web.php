@@ -8,6 +8,7 @@ use App\Http\Livewire\JimTop;
 use App\Http\Livewire\MachineEdit;
 use App\Http\Livewire\MachineShow;
 use App\Http\Livewire\Record;
+use App\Http\Livewire\RecordMachine;
 use App\Http\Livewire\TrainingAreaEdit;
 use App\Http\Livewire\TrainingAreaShow;
 use App\Http\Livewire\UserShow;
@@ -39,6 +40,7 @@ Route::middleware('auth')->middleware('admin')->group(function() {
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/record', Record::class)->name('record');
+    Route::get('/record/machine/{id}', RecordMachine::class)->name('recordMachine');
 });
 
 
