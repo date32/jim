@@ -16,32 +16,62 @@ class TrainingTableSeeder extends Seeder
         DB::table('trainings')->insert([
             'user_id' => '1',
             'machine_id' => '1',
-            'minutes' => '10',
-            'seconds' => '25',
-            'speed' => '6',
-            'distance' => '2',
+            'minutes' => null,
+            'seconds' => null,
+            'speed' => null,
+            'distance' => null,
             'weight' => '5',
             'count' => '100',
         ]);
         DB::table('trainings')->insert([
             'user_id' => '2',
             'machine_id' => '2',
-            'minutes' => '8',
-            'seconds' => '30',
-            'speed' => '5',
-            'distance' => '1',
+            'minutes' => null,
+            'seconds' => null,
+            'speed' => null,
+            'distance' => null,
             'weight' => '7',
             'count' => '60',
         ]);
         DB::table('trainings')->insert([
             'user_id' => '2',
             'machine_id' => '3',
-            'minutes' => '15',
-            'seconds' => '10',
-            'speed' => '10',
-            'distance' => '3',
+            'minutes' => null,
+            'seconds' => null,
+            'speed' => null,
+            'distance' => null,
             'weight' => '5',
             'count' => '120',
+        ]);
+        DB::table('trainings')->insert([
+            'user_id' => '1',
+            'machine_id' => '4',
+            'minutes' => '8',
+            'seconds' => '30',
+            'speed' => '5',
+            'distance' => '1',
+            'weight' => null,
+            'count' => null,
+        ]);
+        DB::table('trainings')->insert([
+            'user_id' => '2',
+            'machine_id' => '5',
+            'minutes' => '8',
+            'seconds' => '30',
+            'speed' => '5',
+            'distance' => '1',
+            'weight' => null,
+            'count' => null,
+        ]);
+        DB::table('trainings')->insert([
+            'user_id' => '2',
+            'machine_id' => '6',
+            'minutes' => '8',
+            'seconds' => '30',
+            'speed' => '5',
+            'distance' => '1',
+            'weight' => null,
+            'count' => null,
         ]);
     }
 

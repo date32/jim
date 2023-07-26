@@ -8,7 +8,6 @@
                 <div>トレーニングエリア名: {{ $area->training_area }}</div>
                 <div><img src="{{ $area->area_img }}" alt="" class="wi1"></div>
             </div>
-           
         </div>
         <div>→</div>
         <div>
@@ -18,7 +17,7 @@
                 @error('training_area')
                     <div>{{ $message }}</div>
                 @enderror
-                <div><input type="file" wire:model="area_img"></div>              
+                <div><input type="file" wire:model="area_img"></div>
                 <div>
                     <button type="submit">変更</button>
                 </div>

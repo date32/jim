@@ -25,5 +25,17 @@ class MachineForTrainingAreaTableSeeder extends Seeder
             'machine_id' => '3',
             'training_area_id' => '3',
         ]);
+        DB::table('machine_for_training_areas')->insert([
+            'machine_id' => '4',
+            'training_area_id' => '4',
+        ]);
+        DB::table('machine_for_training_areas')->insert([
+            'machine_id' => '5',
+            'training_area_id' => '5',
+        ]);
+        DB::table('machine_for_training_areas')->insert([
+            'machine_id' => '6',
+            'training_area_id' => '6',
+        ]);
     }
 }

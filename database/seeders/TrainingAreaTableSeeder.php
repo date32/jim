@@ -22,5 +22,14 @@ class TrainingAreaTableSeeder extends Seeder
         DB::table('training_areas')->insert([
             'training_area' => '肩'
         ]);
+        DB::table('training_areas')->insert([
+            'training_area' => '歩く'
+        ]);
+        DB::table('training_areas')->insert([
+            'training_area' => '走る'
+        ]);
+        DB::table('training_areas')->insert([
+            'training_area' => 'バイク'
+        ]);
     }
 }

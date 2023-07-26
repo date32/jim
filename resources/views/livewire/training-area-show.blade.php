@@ -13,7 +13,7 @@
         <tr>
             <td>{{$area->id}}</td>
             <td>{{$area->training_area}}</td>
-            <td><img src="{{$area->area_img}}" alt="" class="wi1"></td>
+            <td><img src="{{$area->area_img}}" alt="" class="wi1"></td>    
             <td><button onclick="location.href='/admin/training_area/edit/{{$area->id}}'">変更</button></td>
             <td><button wire:click="confirmTrainigAreaDelete({{$area->id}})">削除</button></td>
         </tr>

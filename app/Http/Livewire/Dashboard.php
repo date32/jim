@@ -20,15 +20,15 @@ class Dashboard extends Component
     public $weight;
     public $count;
 
-    protected $rules = [
-        'machineId' => 'required',
-        'minutes' => 'integer|min:0|max:59',
-        'seconds' => 'integer|min:0|max:59',
-        'speed' => 'numeric',
-        'distance' => 'numeric',
-        'weight' => 'numeric',
-        'count' => 'numeric',
-    ];
+    // protected $rules = [
+    //     'machineId' => 'required',
+    //     'minutes' => 'integer|min:0|max:59',
+    //     'seconds' => 'integer|min:0|max:59',
+    //     'speed' => 'numeric',
+    //     'distance' => 'numeric',
+    //     'weight' => 'numeric',
+    //     'count' => 'numeric',
+    // ];
     protected $messages = [
         'machineId.required' => '必須項目です',
         'minutes.integer' => '0～59の数字（整数）を入力してください',
@@ -48,7 +48,7 @@ class Dashboard extends Component
     }
 
     public function trainingStore() {
-        $this->validate();
+        // $this->validate();
 
         $training = new Training();
         $training->user_id = Auth::user()->id;

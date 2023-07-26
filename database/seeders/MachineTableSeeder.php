@@ -15,12 +15,27 @@ class MachineTableSeeder extends Seeder
     {
         DB::table('machines')->insert([
             'machine_name' => 'マシーン１',
+            'type' => '筋力',
         ]);
         DB::table('machines')->insert([
             'machine_name' => 'マシーン２',
+            'type' => '筋力',
         ]);
         DB::table('machines')->insert([
             'machine_name' => 'マシーン３',
+            'type' => '筋力',
+        ]);
+        DB::table('machines')->insert([
+            'machine_name' => 'ランニング（歩）',
+            'type' => '持久力',
+        ]);
+        DB::table('machines')->insert([
+            'machine_name' => 'ランニング（走）',
+            'type' => '持久力',
+        ]);
+        DB::table('machines')->insert([
+            'machine_name' => 'バイク',
+            'type' => '持久力',
         ]);
     }
 }

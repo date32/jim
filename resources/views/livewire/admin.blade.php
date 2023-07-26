@@ -47,6 +47,13 @@
                 @endif
             </div>
             <div>
+                <input type="radio" id="option1" wire:model="type" value="筋力" required>
+                <label for="option1">筋力</label><br>
+
+                <input type="radio" id="option2" wire:model="type" value="持久力" required>
+                <label for="option2">持久力</label><br>
+            </div>
+            <div>
                 <div>トレーニングエリア</div>
                 @foreach ($training_areas as $area)
                     <input type="checkbox" id="{{ $area->training_area }}" wire:model="selectedOptions"

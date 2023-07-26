@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('machine_name')->unique();
             $table->string('img')->nullable();
+            $table->string('type');
             $table->timestamps();
         });
     }

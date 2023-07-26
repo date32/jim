@@ -8,6 +8,7 @@
                 <div>マシーン名: {{ $machine->machine_name }}</div>
                 <div><img src="{{ $machine->img }}" alt="" class="wi1"></div>
             </div>
+            <div>タイプ：{{$machine->type}}</div>
             <div class="dis">
                 <div>トレーニングエリア:</div>
                 <div>
@@ -29,6 +30,7 @@
                     <div>{{ $message }}</div>
                 @enderror
                 <div><input type="file" wire:model="machine_img"></div>
+                <div>タイプ：{{$machine->type}}</div>
                 <div>
                     <div>トレーニングエリア</div>
                     @foreach ($training_areas as $area)

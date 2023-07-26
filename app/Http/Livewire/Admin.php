@@ -26,6 +26,7 @@ class Admin extends Component
     public $userError = false;
     public $machineError = false;
     public $areaError = false;
+    public $type;
 
     protected $rules = [];
     protected $messages = [];
@@ -112,6 +113,8 @@ class Admin extends Component
             // 表示するパスは/storage/ディレクトリ名/ファイル名　publicの直下を参照する
             $machine->img = '/storage' . '/' . $dir . '/' . $file_name;
         }
+
+        $machine->type = $this->type;
 
         // 保存
         $machine->save();
