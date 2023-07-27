@@ -99,10 +99,4 @@
     </form>
 
     <div><a href="/record">今までの記録を見る</a></div>
-
-    <div>累計数(t)</div>
-    <div>累計数(km)</div>
-    <div>今月累計数(t)</div>
-    <div>今月累計数(km)</div>
-    <div>マシーン別トレーニング軌跡</div>
 </div>
