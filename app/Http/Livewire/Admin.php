@@ -85,10 +85,14 @@ class Admin extends Component
         $this->messages = [];
 
         $this->rules = [
-            'machine_name' => 'required|string|unique:machines,machine_name'
+            'machine_name' => 'required|string|unique:machines,machine_name',
+            'type' => 'required',
+            'selectedOptions' => 'required',
         ];
         $this->messages = [
             'machine_name.unique' => 'そのマシーン名は登録されています',
+            'type.required' => '必須項目です',
+            'selectedOptions.required' => '必須項目です',
         ];
 
         $this->machineError = true;
