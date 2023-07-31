@@ -15,7 +15,7 @@
 
                 <tr class="he1">
                     <td>使用マシーン</td>
-                    <td>
+                    <td class="mr10">
                         <div>
                             <select wire:model="machineId" required>
                                 <option value="">選択してください</option>
@@ -28,8 +28,8 @@
                             @enderror
                         </div>
                     </td>
-                    <td><img src="{{ $machineImg }}" alt=""></td>
-                    <td>タイプ：{{ $type }}</td>
+                    <td class="mr10"><img class="wi3" src="{{ $machineImg }}" alt=""></td>
+                    <td class="pl20">タイプ：{{ $type }}</td>
                 </tr>
 
 
@@ -171,7 +171,7 @@
             <div>
                 <button type="submit" class="ccenter3 original-button mb20">送信</button>
             </div>
-            <div class="wi8 ccenter3"><a href="/record" class="a">今までの記録を見る</a></div>
+            <div class="wi8 ccenter3 mb20"><a href="/record" class="a">今までの記録を見る</a></div>
         </div>
 
         {{-- スマホ用 --}}

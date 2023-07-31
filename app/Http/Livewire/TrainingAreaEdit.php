@@ -33,8 +33,12 @@ class TrainingAreaEdit extends Component
         // 変更するデータ取得
         $update_area = TrainingArea::find($id);
 
+        // トレーニングエリア名が入力されていたら　変更する
         if ($this->training_area != null) {
             $update_area->training_area = $this->training_area;
+        }else {
+            // 入力されていなかったら元々の名前を使う（画像のファイル名に使うので）
+            $this->training_area = $update_area->training_area;
         }
 
         if ($this->area_img != null) {

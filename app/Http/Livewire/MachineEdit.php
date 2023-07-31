@@ -40,8 +40,10 @@ class MachineEdit extends Component
 
         // マシーン名に入力していたらマシーン名変更
         if ($this->machine_name != null) {
-
             $update_machine->machine_name = $this->machine_name;
+        }else {
+            // 入力されていなかったら元々の名前を使う（画像のファイル名に使うので）
+            $this->machine_name = $update_machine->machine_name;
         }
 
         // 画像を選択していたら画像を変更する
