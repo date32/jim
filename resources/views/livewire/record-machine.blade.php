@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img4">
     <livewire:header />
     <div class="f2 tcenter mt30 mb20">{{ $machine->machine_name }}のトレーニング軌跡</div>
     <div><img class="wi-50 ccenter3 mb20 sp1" src="{{ $machine->img }}" alt=""></div>

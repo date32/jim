@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('machine_id')->references('id')->on('machines');
             $table->integer('minutes')->nullable();
             $table->integer('seconds')->nullable();
-            $table->integer('speed')->nullable();
-            $table->integer('distance')->nullable();
+            $table->decimal('speed')->nullable();
+            $table->decimal('distance')->nullable();
             $table->integer('weight')->nullable();
             $table->integer('count')->nullable();
             $table->timestamps();

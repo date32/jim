@@ -50,12 +50,22 @@ class Dashboard extends Component
 
     public function trainingStore() {
         $this->validate();
-
+        // dd($this->distance);
         $training = new Training();
         $training->user_id = Auth::user()->id;
         $training->machine_id = $this->machineId;
-        $training->minutes = $this->minutes;
-        $training->seconds = $this->seconds;
+        if($this->minutes == null) {
+            $training->minutes = 0;
+        }else {
+            $training->minutes = $this->minutes;
+        }
+
+        if($this->seconds == null) {
+            $training->seconds = 0;
+        }else {
+            $training->seconds = $this->seconds;
+        }
+        
         $training->speed = $this->speed;
         $training->distance = $this->distance;
         $training->weight = $this->weight;

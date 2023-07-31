@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img2">
     <livewire:header />
     <div class="f2 tcenter mt30">今日のトレーニング</div>
 
@@ -28,7 +28,7 @@
                             @enderror
                         </div>
                     </td>
-                    <td class="mr10"><img class="wi3" src="{{ $machineImg }}" alt=""></td>
+                    <td class="mr10"><img class="he1" src="{{ $machineImg }}" alt=""></td>
                     <td class="pl20">タイプ：{{ $type }}</td>
                 </tr>
 
@@ -178,23 +178,18 @@
         <div class="pc-none">
 
             <div>使用マシーン</div>
-            <div class="flex">
-                <div class="mr10">
-                    <div>
-                        <select wire:model="machineId" required>
-                            <option value="">選択してください</option>
-                            @foreach ($machines as $machine)
-                                <option value="{{ $machine->id }}">{{ $machine->machine_name }}</option>
-                            @endforeach
-                        </select>
-                        <div class="mb10">タイプ：{{ $type }}</div>
-                        @error('machineId')
-                            <div>{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="wi1-5"><img src="{{ $machineImg }}" alt=""></div>
-            </div>
+            <select wire:model="machineId" required>
+                <option value="">選択してください</option>
+                @foreach ($machines as $machine)
+                    <option value="{{ $machine->id }}">{{ $machine->machine_name }}</option>
+                @endforeach
+            </select>
+            <div class="mb10">タイプ：{{ $type }}</div>
+            @error('machineId')
+                <div>{{ $message }}</div>
+            @enderror
+            <div><img class="ccenter3 wi2" src="{{ $machineImg }}" alt=""></div>
+
 
             @if ($type === '持久力')
                 <div>トレーニング時間</div>
@@ -259,5 +254,10 @@
 
     </form>
 
-
 </div>
+
+<style>
+    /* .abc {
+        color: red;
+    } */
+</style>

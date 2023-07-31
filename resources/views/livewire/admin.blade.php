@@ -31,7 +31,7 @@
                     @endif
                 </div>
                 <div class="p10">
-                    <button type="submit" class="original-button">登録</button>
+                    <button type="submit" class="original-button ccenter3">登録</button>
                 </div>
             </form>
         </div>
@@ -96,7 +96,7 @@
                     <input type="file" wire:model="machine_img">
                 </div>
                 <div class="p10">
-                    <button type="submit" class="original-button">登録</button>
+                    <button type="submit" class="original-button ccenter3">登録</button>
                 </div>
             </form>
         </div>
@@ -122,7 +122,7 @@
                     <input type="file" wire:model="area_img">
                 </div>
                 <div class="p10">
-                    <button type="submit" class="original-button">登録</button>
+                    <button type="submit" class="original-button ccenter3">登録</button>
                 </div>
             </form>
         </div>

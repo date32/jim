@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img3">
     <livewire:header />
     <div class="f2 tcenter mt30 mb20">トレーニングの記録</div>
     <div class="dis mb10">
@@ -119,7 +119,5 @@
         @endif
 
     </div>
-
     
 </div>
-
