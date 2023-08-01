@@ -33,6 +33,5 @@
     @else
         <livewire:header />
     @endif
-    <div class="tcenter mt20">since2023.7.30</div>
-    
+    <div class="tcenter mt20">since2023.7.30</div> 
 </div>
