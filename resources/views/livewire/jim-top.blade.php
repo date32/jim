@@ -1,11 +1,11 @@
 <div class="wi12 ccenter3 sp1 jim-img1">
     @if ($login === null)
-        <div class="tcenter f2 pt20">My JIM life</div>
-        <div class="wi5 ccenter3 mb20">ver.2</div>
-            
+        <div class="tcenter f2 ft1 pt20">My JIM life</div>
+        <div class="wi5 ccenter3 tr ft1 mb20">ver.2</div>
+
         <form wire:submit.prevent="login">
 
-            <div class="b wi5 ccenter3 sp1 p10 ra10">
+            <div class="b wi5 ccenter3 sp1 p10 ra10 mb50">
                 <div class="dis mb10 ccenter2">
                     <div class="wi1 ccenter4">
                         <label for="name">ユーザー名</label>
@@ -29,9 +29,17 @@
                 </div>
             </div>
 
+            <div class="b wi5 ccenter3 sp1 p10 ra10">
+                <div class="p10">
+                    <button class="original-button4 ccenter3 cursor mb20" onclick="location.href='#'">一言掲示板</button>
+                    <button class="original-button4 ccenter3 cursor mb20" onclick="location.href='#'">工事中</button>
+                    <button class="original-button4 ccenter3 cursor" onclick="location.href='#'">工事中</button>
+                </div>
+            </div>
+
         </form>
     @else
         <livewire:header />
     @endif
-    <div class="tcenter mt20">since2023.7.30</div> 
+    <div class="wi5 ccenter3 tr mt20 ft1">since2023.7.30</div>
 </div>

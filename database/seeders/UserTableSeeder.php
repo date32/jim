@@ -17,10 +17,12 @@ class UserTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'test',
             'password' => Hash::make('1'),
+            'weight' => 60,
         ]);
         DB::table('users')->insert([
             'name' => 'admin',
             'password' => Hash::make('1'),
+            'weight' => 50,
         ]);
         
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Training;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -11,6 +12,7 @@ class Header extends Component
     public $userName;
     public $admin = false;
     public $today;
+    public $message;
 
     public function mount() {
         $this->userName = Auth::user()->name;
@@ -18,6 +20,25 @@ class Header extends Component
             $this->admin = true;
         }
         $this->today = $this->getFormat();
+
+        $latestCreatedAt = Training::latest('created_at')->value('created_at');
+        if ($latestCreatedAt) {
+            $latestDate = strtotime($latestCreatedAt);
+            $today = strtotime('today');
+            $diffDays = floor(($today - $latestDate) / (60 * 60 * 24)); // 差分日数を計算
+        
+            if ($diffDays == 0 || $diffDays < 0) {
+                $this->message = "毎日頑張っていますね";
+            } elseif ($diffDays >= 1 && $diffDays < 10) {
+                $this->message = "今日はどこを鍛えますか？";
+            } elseif ($diffDays >= 10) {
+                $this->message = "久しぶりのトレーニングです。無理しないようにしましょう";
+            }
+        } else {
+            // レコードが存在しない場合の処理
+            // 例えば、データベースが空の場合など
+            $this->message = "初めてのトレーニングです";
+        }
     }
     public function logout() {
         Auth::logout();

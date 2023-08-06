@@ -19,8 +19,10 @@ return new class extends Migration
             $table->integer('seconds')->nullable();
             $table->decimal('speed')->nullable();
             $table->decimal('distance')->nullable();
+            $table->integer('strength')->nullable();
             $table->integer('weight')->nullable();
             $table->integer('count')->nullable();
+            $table->decimal('calorie')->nullable();
             $table->timestamps();
         });
     }

@@ -255,9 +255,3 @@
     </form>
 
 </div>
-
-<style>
-    /* .abc {
-        color: red;
-    } */
-</style>

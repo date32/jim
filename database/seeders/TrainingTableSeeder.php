@@ -22,6 +22,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => null,
             'weight' => '5',
             'count' => '100',
+            'strength' => '100',
+            'calorie' => '200',
             'created_at' => now(),
         ]);
         DB::table('trainings')->insert([
@@ -33,6 +35,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => null,
             'weight' => '7',
             'count' => '60',
+            'strength' => '80',
+            'calorie' => '150',
             'created_at' => now(),
         ]);
         DB::table('trainings')->insert([
@@ -44,6 +48,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => null,
             'weight' => '5',
             'count' => '120',
+            'strength' => '50',
+            'calorie' => '100',
             'created_at' => now(),
         ]);
         DB::table('trainings')->insert([
@@ -55,6 +61,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => '1',
             'weight' => null,
             'count' => null,
+            'strength' => null,
+            'calorie' => '200',
             'created_at' => now(),
         ]);
         DB::table('trainings')->insert([
@@ -66,6 +74,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => '1',
             'weight' => null,
             'count' => null,
+            'strength' => null,
+            'calorie' => '300',
             'created_at' => now(),
         ]);
         DB::table('trainings')->insert([
@@ -77,6 +87,8 @@ class TrainingTableSeeder extends Seeder
             'distance' => '1',
             'weight' => null,
             'count' => null,
+            'strength' => null,
+            'calorie' => '120',
             'created_at' => now(),
         ]);
     }

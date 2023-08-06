@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('password');
+            $table->decimal('weight')->nullable();
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@ use App\Http\Livewire\RecordMachine;
 use App\Http\Livewire\TrainingAreaEdit;
 use App\Http\Livewire\TrainingAreaShow;
 use App\Http\Livewire\UserShow;
+use App\Http\Livewire\UserWeight;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/record', Record::class)->name('record');
     Route::get('/record/machine/{id}', RecordMachine::class)->name('recordMachine');
+    Route::get('/weight', UserWeight::class)->name('weight');
 });
 
 
