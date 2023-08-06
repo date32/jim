@@ -19,6 +19,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
+    
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
 </head>
 
 <body>

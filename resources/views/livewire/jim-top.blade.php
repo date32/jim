@@ -8,14 +8,14 @@
             <div class="b wi5 ccenter3 sp1 p10 ra10 mb50">
                 <div class="dis mb10 ccenter2">
                     <div class="wi1 ccenter4">
-                        <label for="name">ユーザー名</label>
+                        <label for="name"><i class="fa-solid fa-user mr10"></i>ユーザー名</label>
                     </div>
                     <input type="text" id="name" wire:model="name" required>
                 </div>
 
                 <div class="dis mb10 ccenter2">
                     <div class="wi1 ccenter4">
-                        <label class="wi1 ccenter4" for="pass">パスワード</label>
+                        <label class="wi1 ccenter4" for="pass"><i class="fa-solid fa-key mr10"></i>パスワード</label>
                     </div>
                     <input type="password" id="pass" wire:model="pass" required>
                 </div>
@@ -25,13 +25,13 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="original-button ccenter3">ログイン</button>
+                    <button type="submit" class="original-button ccenter3"><i class="fa-solid fa-arrow-right-to-bracket mr10"></i>ログイン</button>
                 </div>
             </div>
 
             <div class="b wi5 ccenter3 sp1 p10 ra10">
                 <div class="p10">
-                    <button class="original-button4 ccenter3 cursor mb20" onclick="location.href='#'">一言掲示板</button>
+                    <button class="original-button4 ccenter3 cursor mb20" onclick="location.href='#'"><i class="fa-solid fa-pen-nib mr10"></i>一言掲示板</button>
                     <button class="original-button4 ccenter3 cursor mb20" onclick="location.href='#'">工事中</button>
                     <button class="original-button4 ccenter3 cursor" onclick="location.href='#'">工事中</button>
                 </div>

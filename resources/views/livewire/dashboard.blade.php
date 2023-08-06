@@ -2,256 +2,179 @@
     <livewire:header />
     <div class="f2 tcenter mt30">今日のトレーニング</div>
 
+    {{-- 両方 --}}
     <form wire:submit.prevent="trainingStore">
-        {{-- pc用 --}}
-        <div class="sp-none">
-            <table class="wi8 ccenter3">
-                <tr>
-                    <th class="wi1-5"></th>
-                    <th class="wi2"></th>
-                    <th class="wi3"></th>
-                    <th class="wi1-5"></th>
-                </tr>
+        <div class="dis">
 
-                <tr class="he1">
-                    <td>使用マシーン</td>
-                    <td class="mr10">
-                        <div>
-                            <select wire:model="machineId" required>
-                                <option value="">選択してください</option>
-                                @foreach ($machines as $machine)
-                                    <option value="{{ $machine->id }}">{{ $machine->machine_name }}</option>
-                                @endforeach
-                            </select>
-                            @error('machineId')
-                                <div>{{ $message }}</div>
-                            @enderror
+            <div class="wi-80">
+                <div class="dis">
+                    <div class="wi-20 ccenter4 sp1">
+                        <div>使用マシーン</div>
+                    </div>
+                    <div class="wi-40">
+                        <select wire:model="machineId" required>
+                            <option value="">選択してください</option>
+                            @foreach ($machines as $machine)
+                                <option value="{{ $machine->id }}">{{ $machine->machine_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('machineId')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="wi-40 ccenter4">
+                        <div class="mb10">タイプ：{{ $type }}</div>
+                    </div>
+                </div>
+
+                <div class="pc-none">
+                    <div><img class="ccenter3 wi2" src="{{ $machineImg }}" alt=""></div>
+                </div>
+
+                <div class="he2rem"></div>
+
+                @if ($type === '持久力')
+                    <div class="dis">
+                        <div class="wi-20 ccenter4 sp1">トレーニング時間</div>
+                        <div class="wi-40 dis flex sp1">
+                            <div class="mr10"><input class="sp-100" type="text" wire:model="minutes"></div>
+                            <div class="ccenter4 mr20">分</div>
+                            <div class="mr10"><input class="sp-100" type="text" wire:model="seconds"></div>
+                            <div class="ccenter4">秒</div>
                         </div>
-                    </td>
-                    <td class="mr10"><img class="he1" src="{{ $machineImg }}" alt=""></td>
-                    <td class="pl20">タイプ：{{ $type }}</td>
-                </tr>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('minutes')
+                            <div class="wi-40 c3">{{ $message }}</div>
+                        @enderror
+                        @error('seconds')
+                            <div class="wi-40 c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
+                    <div class="dis">
+                        <div class="wi-20 ccenter4">スピード</div>
+                        <div class="wi-40 dis flex">
+                            <div class="mr10"><input type="text" wire:model="speed"></div>
+                            <div class="ccenter4">km/h</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('speed')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <tr class="he3">
-                    <td colspan="4">
+                    <div class="dis">
+                        <div class="wi-20 ccenter4">距離</div>
+                        <div class="wi-40 dis flex">
+                            <div class="mr10"><input type="text" wire:model="distance"></div>
+                            <div class="ccenter4">km</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('distance')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                        @if ($type === '持久力')
-                            <table>
-                                <tr>
-                                    <th class="wi1-5"></th>
-                                    <th class="wi3"></th>
-                                    <th class="wi3"></th>
-                                </tr>
-                                <tr>
-                                    <td>トレーニング時間</td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"><input type="text" wire:model="minutes"></div>
-                                            <div class="ccenter4">分</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"><input type="text" wire:model="seconds"></div>
-                                            <div class="ccenter4">秒</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="he2rem c3">
-                                    <td></td>
-                                    <td>
-                                        @error('minutes')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td>
-                                        @error('seconds')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>スピード</td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"><input type="text" wire:model="speed"></div>
-                                            <div class="ccenter4">km/h</div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr class="he2rem c3">
-                                    <td></td>
-                                    <td>
-                                        @error('speed')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>距離</td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"><input type="text" wire:model="distance"></div>
-                                            <div class="ccenter4">km</div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr class="he2rem c3">
-                                    <td></td>
-                                    <td>
-                                        @error('distance')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td></td>
-                                </tr>
+                    <div class="dis">
+                        <div class="wi-20 ccenter4 sp1">消費カロリー</div>
+                        <div class="wi-40 dis flex">
+                            <div class="mr10"><input type="text" wire:model="digitalCalorie"></div>
+                            <div class="ccenter4">cal</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('digitalCalorie')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endif
 
+                @if ($type === '筋力')
+                    <div class="dis">
+                        <div class="wi-20 ccenter4">強度</div>
+                        <div class="mr10"><input type="text" wire:model="strength"></div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('strength')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                            </table>
-                        @endif
+                    <div class="dis">
+                        <div class="wi-20 ccenter4">重さ</div>
+                        <div class="wi-40 dis flex">
+                            <div class="mr10"><input type="text" wire:model="weight"></div>
+                            <div class="ccenter4">kg</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('weight')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                        @if ($type === '筋力')
-                            <table>
-                                <tr>
-                                    <th class="wi1-5"></th>
-                                    <th class="wi3"></th>
-                                    <th class="wi3"></th>
-                                </tr>
-                                <tr>
-                                    <td>重さ</td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"><input type="text" wire:model="weight"></div>
-                                            <div class="ccenter4">kg</div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr class="he2rem c3">
-                                    <td></td>
-                                    <td>
-                                        @error('weight')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>カウント</td>
-                                    <td>
-                                        <div class="dis">
-                                            <div class="mr20"> <input type="text" wire:model="count"></div>
-                                            <div class="ccenter4">回</div>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr class="he2rem c3">
-                                    <td></td>
-                                    <td>
-                                        @error('count')
-                                            <div>{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        @endif
+                    <div class="dis">
+                        <div class="wi-20 ccenter4">カウント</div>
+                        <div class="wi-40 dis flex">
+                            <div class="mr10"> <input type="text" wire:model="count"></div>
+                            <div class="ccenter4">回</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('count')
+                            <div class="c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                    </td>
-                </tr>
+                    <div class="dis sp1">
+                        <div class="wi-20 ccenter4 sp1">トレーニング時間</div>
+                        <div class="dis flex">
+                            <div class="mr10"><input class="sp-100" type="text" wire:model="minutes"></div>
+                            <div class="ccenter4 mr20">分</div>
+                            <div class="mr10"><input class="sp-100" type="text" wire:model="seconds"></div>
+                            <div class="ccenter4">秒</div>
+                        </div>
+                    </div>
+                    <div class="he2rem dis">
+                        <div class="wi-20"></div>
+                        @error('minutes')
+                            <div class="wi-40 c3">{{ $message }}</div>
+                        @enderror
+                        @error('seconds')
+                            <div class="wi-40 c3">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-            </table>
+                    <div class="dis">
+                        <div class="wi-20 ccenter4 sp1">消費カロリー</div>
+                        <div class="mr20"><input type="text" wire:model="calorie" readonly></div>
+                        <div>※トレーニング時間を入力すると消費カロリーが計算されます。<br>正味の時間を入力してください。<br>
+                            また、体重登録は必須です。
+                        </div>
+                    </div>
+                @endif
 
-
-            <div>
-                <button type="submit" class="ccenter3 original-button mb20">送信</button>
             </div>
-            <div class="wi8 ccenter3 mb20"><a href="/record" class="a">今までの記録を見る</a></div>
+
+            <div class="wi-20 sp-none">
+                <div><img class="ccenter3 wi2" src="{{ $machineImg }}" alt=""></div>
+            </div>
+
         </div>
 
-        {{-- スマホ用 --}}
-        <div class="pc-none">
-
-            <div>使用マシーン</div>
-            <select wire:model="machineId" required>
-                <option value="">選択してください</option>
-                @foreach ($machines as $machine)
-                    <option value="{{ $machine->id }}">{{ $machine->machine_name }}</option>
-                @endforeach
-            </select>
-            <div class="mb10">タイプ：{{ $type }}</div>
-            @error('machineId')
-                <div>{{ $message }}</div>
-            @enderror
-            <div><img class="ccenter3 wi2" src="{{ $machineImg }}" alt=""></div>
-
-
-            @if ($type === '持久力')
-                <div>トレーニング時間</div>
-                <div class="flex">
-                    <div class="mr10"><input class="wi1" type="text" wire:model="minutes"></div>
-                    <div class="ccenter4 mr20">分</div>
-                    <div class="mr10"><input class="wi1" type="text" wire:model="seconds"></div>
-                    <div class="ccenter4">秒</div>
-                </div>
-                @error('minutes')
-                    <div>{{ $message }}</div>
-                @enderror
-                @error('seconds')
-                    <div>{{ $message }}</div>
-                @enderror
-                <div>スピード</div>
-                <div class="flex">
-                    <div class="mr10"><input type="text" wire:model="speed"></div>
-                    <div class="ccenter4">km/h</div>
-                </div>
-                @error('speed')
-                    <div>{{ $message }}</div>
-                @enderror
-                <div>距離</div>
-                <div class="flex">
-                    <div class="mr10"><input type="text" wire:model="distance"></div>
-                    <div class="ccenter4">km</div>
-                </div>
-                @error('distance')
-                    <div>{{ $message }}</div>
-                @enderror
-            @endif
-
-            @if ($type === '筋力')
-                <div>重さ</div>
-                <div class="flex">
-                    <div class="mr10"><input type="text" wire:model="weight"></div>
-                    <div class="ccenter4">kg</div>
-                </div>
-                @error('weight')
-                    <div>{{ $message }}</div>
-                @enderror
-                <div>カウント</div>
-                <div class="flex">
-                    <div class="mr10"> <input type="text" wire:model="count"></div>
-                    <div class="ccenter4">回</div>
-                </div>
-                @error('count')
-                    <div>{{ $message }}</div>
-                @enderror
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            @endif
-
-            <div>
-                <button type="submit" class="ccenter3 original-button mb20 mt20">送信</button>
-            </div>
-            <div><a href="/record" class="a">今までの記録を見る</a></div>
+        <div>
+            <button type="submit" class="ccenter3 original-button mb20 mt20">送信</button>
         </div>
-
     </form>
 
 </div>

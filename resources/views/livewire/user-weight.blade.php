@@ -26,7 +26,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="original-button ccenter3">登録</button>
+        <button type="submit" class="original-button ccenter3"><i class="fa-solid fa-weight-scale mr10"></i>登録</button>
     </form>
 
 </div>

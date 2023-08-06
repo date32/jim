@@ -605,6 +605,9 @@
     display: none;
 }
 
+.wi-80 {
+    width: 80%;
+}
 .wi-50 {
     width: 50%;
 }
@@ -680,6 +683,35 @@
         height: 170px;
     }
 
+    .sp-30 {
+        width: 30%;
+    }
+    .sp-40 {
+        width: 40%;
+    }
+    .sp-50 {
+        width: 50%;
+    }
+    .sp-60 {
+        width: 60%;
+    }
+    .sp-70 {
+        width: 70%;
+    }
+    .sp-80 {
+        width: 80%;
+    }
+    .sp-90 {
+        width: 90%;
+    }
+    .sp-100 {
+        width: 100%;
+    }
+
+    
+    .c3 {
+        color: red;;
+    }
     .sp1 {
         width: 360px;
     }

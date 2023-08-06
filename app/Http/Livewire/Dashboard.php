@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Machine;
 use App\Models\Training;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -20,6 +21,9 @@ class Dashboard extends Component
     public $distance;
     public $weight;
     public $count;
+    public $digitalCalorie;
+    public $calorie;
+    public $strength;
 
     protected $rules = [
         'machineId' => 'required',
@@ -29,6 +33,8 @@ class Dashboard extends Component
         'distance' => 'nullable|numeric',
         'weight' => 'nullable|numeric',
         'count' => 'nullable|numeric',
+        'digitalCalorie' => 'nullable|numeric',
+        'strength' => 'nullable|numeric',
     ];
     protected $messages = [
         'machineId.required' => '必須項目です',
@@ -42,49 +48,97 @@ class Dashboard extends Component
         'distance.numeric' => '数字のみ記入してください',
         'weight.numeric' => '数字のみ記入してください',
         'count.numeric' => '数字のみ記入してください',
+        'digitalCalorie.numeric' => '数字のみ記入してください',
+        'strength.numeric' => '数字のみ記入してください',
     ];
 
-    public function mount() {        
-        $this->machines = Machine::get();    
+    public function mount()
+    {
+        $this->machines = Machine::get();
     }
 
-    public function trainingStore() {
+    public function trainingStore()
+    {
         $this->validate();
-        // dd($this->distance);
         $training = new Training();
         $training->user_id = Auth::user()->id;
         $training->machine_id = $this->machineId;
-        if($this->minutes == null) {
+
+        // 持久力
+        if ($this->minutes == null) {
             $training->minutes = 0;
-        }else {
+        } else {
             $training->minutes = $this->minutes;
         }
 
-        if($this->seconds == null) {
+        if ($this->seconds == null) {
             $training->seconds = 0;
-        }else {
+        } else {
             $training->seconds = $this->seconds;
         }
-        
         $training->speed = $this->speed;
         $training->distance = $this->distance;
+
+        // 筋力
         $training->weight = $this->weight;
         $training->count = $this->count;
+        $training->strength = $this->strength;
+
+        // 共通
+        if ($this->type == '持久力') {
+            if (is_numeric($this->digitalCalorie)) {
+                $training->calorie = $this->digitalCalorie;
+            }
+        }
+
+        if ($this->type == '筋力') {
+            if (is_numeric($this->calorie)) {
+                $training->calorie = $this->calorie;
+            }
+        }
+
         $training->save();
 
         return redirect()->route('dashboard');
-
     }
 
-    public function updatedMachineId() {
-        
-        if($this->machineId != "") {
+    public function updatedMachineId()
+    {
+
+        if ($this->machineId != "") {
             $this->machineImg = Machine::find($this->machineId)->img;
             $this->type = Machine::find($this->machineId)->type;
-        }else {
+        } else {
             $this->machineImg = null;
         }
-        
+    }
+
+    public function updatedMinutes($name, $value)
+    {
+        // 体重取得
+        $userId = Auth::user()->id;
+        $userWeight = User::find($userId)->weight;
+
+        // 入力時間が空欄なら0にする
+        if ($this->minutes == '' || !is_numeric($this->minutes)) {
+            $this->minutes = 0;
+        }
+
+        $hour = ($this->minutes * 60 + $this->seconds) / 3600;
+        $this->calorie = round(3.5 * $userWeight * $hour * 1.05, 2);
+    }
+    public function updatedSeconds($name, $value)
+    {
+        // 体重取得
+        $userId = Auth::user()->id;
+        $userWeight = User::find($userId)->weight;
+
+        // 入力時間が空欄なら0にする
+        if ($this->seconds == '' || !is_numeric($this->seconds)) {
+            $this->seconds = 0;
+        }
+        $hour = ($this->minutes * 60 + $this->seconds) / 3600;
+        $this->calorie = round(3.5 * $userWeight * $hour * 1.05, 2);
     }
 
     public function render()
