@@ -15,6 +15,8 @@ class Record extends Component
     public $loginUserId;
     public $machines;
     public $monthNumber;
+    public $calorie;
+    public $monthCalorie;
 
     public function mount()
     {
@@ -26,6 +28,16 @@ class Record extends Component
         $this->areaWithTraining = TrainingArea::with('machineForTrainingAreas.machine.trainings')->get();
         $this->loginUserId = Auth::user()->id;
         $this->machines = Machine::get();
+
+        $trainings = Training::where('user_id', $this->loginUserId)->get();
+        $this->calorie = 0;
+        $this->monthCalorie = 0;
+        foreach($trainings as $training) {
+            $this->calorie += $training->calorie;
+            if($this->monthNumber == $training->created_at->format('n')) {
+                $this->monthCalorie += $training->calorie;
+            }
+        }
     }
     public function render()
     {

@@ -54,6 +54,26 @@
     display: flex;
     flex-wrap: wrap;
 }
+.dis5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.grid3 {  
+    display: grid;    
+    grid-template-columns: 32% 32% 32%;
+    gap: 2%;
+}
+.grid4 {  
+    display: grid;    
+    grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+    gap: 2%;
+}
+.grid5 {  
+    display: grid;    
+    grid-template-columns: 18.4% 18.4% 18.4% 18.4% 18.4%;
+    gap: 2%;
+}
 
 .a {
     color: blue;
@@ -64,17 +84,41 @@
     border-bottom: 1px solid blue;
 }
 
-/* a { */
-/* color: blue; */
-/* border-bottom: 1px solid blue; */
-/* } */
-/* a:hover { */
-/* border-bottom: 1px solid blue; */
-/* } */
 .wimax {
     width: 100%;
 }
+.wi-90 {
+    width: 90%;
+}
+.wi-80 {
+    width: 80%;
+}
+.wi-70 {
+    width: 70%;
+}
 
+.wi-60 {
+    width: 60%;
+}
+.wi-50 {
+    width: 50%;
+}
+.wi-40 {
+    width: 40%;
+}
+.wi-30 {
+    width: 30%;
+}
+.wi-25 {
+    width: 25%;
+}
+
+.wi-20 {
+    width: 20%;
+}
+.wi-10 {
+    width: 10%;
+}
 .wi13 {
     width: 1300px;
 }
@@ -604,26 +648,6 @@
 .pc-none {
     display: none;
 }
-
-.wi-80 {
-    width: 80%;
-}
-.wi-50 {
-    width: 50%;
-}
-
-.wi-40 {
-    width: 40%;
-}
-
-.wi-25 {
-    width: 25%;
-}
-
-.wi-20 {
-    width: 20%;
-}
-
 .custum-he {
     height: 30px;
 }
@@ -741,6 +765,16 @@
     .wi5 {
         width: 300px;
     }
+    .sp-grid2 {  
+        display: grid;    
+        grid-template-columns: 49% 49%;
+        gap: 2%;
+    }
+    .sp-grid3 {  
+        display: grid;    
+        grid-template-columns: 32% 32% 32%;
+        gap: 2%;
+    }
 
 }
 
@@ -748,3 +782,10 @@
     font-family: 'Merriweather', sans-serif;
     font-weight: 700;
 }
+
+.original-box-shadow {
+    color: #333333;
+    background-color: #dddddd;
+    border-radius: 3px;
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+  }
