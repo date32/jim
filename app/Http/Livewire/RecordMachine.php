@@ -14,6 +14,7 @@ class RecordMachine extends Component
 
     public function mount(String $id) {
         $this->machine = Machine::find($id);
+        // ログイン中のユーザーでクリックしたマシーンを使ったトレーニングを取得
         $this->trainings = Training::where('user_id', Auth::user()->id)->where('machine_id', $id)->get();
     }
 

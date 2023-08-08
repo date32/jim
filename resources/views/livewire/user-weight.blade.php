@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1 jim-img2">
+<div class="wi12 ccenter3 sp1 jim-img5">
     <livewire:header />
     <div class="f2 tcenter mt50 mb10">体重登録</div>
     <div class="tcenter mb20">筋力トレーニングのカロリー計算に使用します</div>

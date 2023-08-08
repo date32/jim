@@ -9,7 +9,10 @@
             <div class="wi-80">
                 <div class="dis">
                     <div class="wi-20 ccenter4 sp1">
-                        <div>使用マシーン</div>
+                        <div class="dis flex">
+                            <div><img src="img/jim6.png" class="wi-2rem mr10" alt=""></div>
+                            <div class="ccenter4">使用マシーン</div>
+                        </div>
                     </div>
                     <div class="wi-40">
                         <select wire:model="machineId" required>
@@ -23,7 +26,10 @@
                         @enderror
                     </div>
                     <div class="wi-40 ccenter4">
-                        <div class="mb10">タイプ：{{ $type }}</div>
+                        <div class="dis flex">
+                            <div><img src="img/jim7.png" class="wi-2rem mr10" alt=""></div>
+                            <div class="ccenter4 mb10">タイプ：{{ $type }}</div>
+                        </div>
                     </div>
                 </div>
 
