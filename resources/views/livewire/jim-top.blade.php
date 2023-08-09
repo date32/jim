@@ -7,14 +7,14 @@
 
             <div class="b wi5 ccenter3 sp1 p10 ra10 mb50">
                 <div class="dis mb10 ccenter2">
-                    <div class="wi1 ccenter4">
+                    <div class="ccenter4 mr10">
                         <label for="name"><i class="fa-solid fa-user mr10"></i>ユーザー名</label>
                     </div>
                     <input type="text" id="name" wire:model="name" required>
                 </div>
 
                 <div class="dis mb10 ccenter2">
-                    <div class="wi1 ccenter4">
+                    <div class="ccenter4 mr10">
                         <label class="wi1 ccenter4" for="pass"><i class="fa-solid fa-key mr10"></i>パスワード</label>
                     </div>
                     <input type="password" id="pass" wire:model="pass" required>
