@@ -1,5 +1,6 @@
 <div class="wi12 ccenter3 sp1">
     <livewire:header />
+    <livewire:menu-list />
     <div class="f2 tcenter mt30">トレーニングエリア一覧</div>
     
     <div class="wi10 ccenter3 mb20 sp-none">
@@ -80,10 +81,5 @@
                 </div>
             </div>
         @endif
-
-    </div>
-
-  
-        <livewire:menu-list />
-    
+    </div> 
 </div>

@@ -1,9 +1,8 @@
 <div class="wi12 ccenter3 sp1">
     <livewire:header />
-
+    <livewire:menu-list />
     <div class="f2 tcenter mt30">ユーザー一覧</div>
     <div class="ccenter3 wi5 mt30 mb30 sp1">
-
         @if (!$delete_yes_no)
         <table>
             <tr class="bb">
@@ -25,7 +24,6 @@
             @endforeach
         </table>
         @endif
-
         @if ($delete_yes_no)
             <div>
                 <p class="tcenter">本当に{{ $name }}を削除しますか？</p>
@@ -35,14 +33,6 @@
                 </div>
             </div>
         @endif
-
-
     </div>
-
-    
-        <livewire:menu-list />
-    
-
-
 </div>
 

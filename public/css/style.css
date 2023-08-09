@@ -59,6 +59,10 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.dis6 {
+    display: flex;
+    justify-content: flex-end;
+}
 .grid3 {  
     display: grid;    
     grid-template-columns: 32% 32% 32%;
@@ -651,7 +655,7 @@
     transform: translateY(1px);
   }
 .pc-none {
-    display: none;
+    display: none !important;
 }
 .custum-he {
     height: 30px;
@@ -774,11 +778,11 @@
     }
 
     .pc-none {
-        display: contents;
+        display: contents !important;
     }
 
     .flex {
-        display: flex;
+        display: flex !important;
     }
 
     .wi5 {

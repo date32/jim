@@ -1,5 +1,6 @@
 <div class="wi12 ccenter3 sp1">
     <livewire:header />
+    <livewire:menu-list />
     <div class="dis mt30">
         {{-- ユーザー登録 --}}
         <div class="br wi4 sp2">
@@ -127,6 +128,5 @@
             </form>
         </div>
     </div>
-    <livewire:menu-list />
 </div>
 

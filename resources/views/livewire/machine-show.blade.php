@@ -1,9 +1,9 @@
 <div class="wi12 ccenter3 sp1">
     <livewire:header />
+    <livewire:menu-list />
     <div class="f2 tcenter mt30 mb30">マシーン一覧</div>
     {{-- pc用 --}}
     <div class="wi13 ccenter3 mb20 sp-none">
-
         @if (!$delete_yes_no)
             <table>
                 <tr class="bb">
@@ -45,7 +45,6 @@
             </table>
         @endif
 
-
         @if ($delete_yes_no)
             <div class="ccenter3 wi5 he1 mb20 sp-none">
                 <p>本当に{{ $name }}を削除しますか？</p>
@@ -55,8 +54,6 @@
                 </div>
             </div>
         @endif
-
-
     </div>
 
     {{-- スマホ用 --}}
@@ -94,8 +91,4 @@
         @endif
 
     </div>
-
-   
-        <livewire:menu-list />
-    
 </div>

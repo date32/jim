@@ -42,4 +42,15 @@ ver.2 = リリース {
                      ],
         
 }
+ver.3 = リリース {
+    トレーニング状況によってコメント表示
+    DB修正 = [
+        trainings:calorie（カロリー）、strength（強度）
+        users:weight（体重）
+    ],
+    体重登録
+    UI/UX修正 = [
+        dashboard側
+    ]
+}
 
