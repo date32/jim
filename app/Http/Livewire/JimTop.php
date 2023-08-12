@@ -37,7 +37,7 @@ class JimTop extends Component
       }
         
       }else {
-        $this->errorMessage = 'ユーザー名のパスワードに一致しません';
+        $this->errorMessage = 'ユーザー名またはパスワードが間違っています';
       }
     }
 

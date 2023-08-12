@@ -11,11 +11,13 @@ class RecordMachine extends Component
 {
     public $machine;
     public $trainings;
+    public $machineWithArea;
 
     public function mount(String $id) {
         $this->machine = Machine::find($id);
         // ログイン中のユーザーでクリックしたマシーンを使ったトレーニングを取得
-        $this->trainings = Training::where('user_id', Auth::user()->id)->where('machine_id', $id)->get();
+        $this->trainings = Training::where('user_id', Auth::user()->id)->where('machine_id', $id)->orderBy('created_at', 'desc')->get();
+        $this->machineWithArea = Machine::where('id', $id)->with('machineForTrainingAreas.trainingArea')->get();
     }
 
     public function render()

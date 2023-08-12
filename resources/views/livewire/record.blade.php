@@ -2,19 +2,156 @@
     <livewire:header />
     <div class="f2 tcenter mt30 mb20">トレーニングの記録</div>
 
-
     @if (!count($areaWithTraining) == 0)
 
         <div class="wrapper b">
             <ul class="tab">
-                <li><a href="#total">今までの累計数</a></li>
-                <li><a href="#monthTotal">今月の累計数</a></li>
+                <li><a href="#totalTraining">今までのトレーニング</a></li>
+                <li><a href="#monthTotalTraining">今月のトレーニング</a></li>
+                <li><a href="#total">今までのエリア累計数</a></li>
+                <li><a href="#monthTotal">今月のエリア累計数</a></li>
                 <li><a href="#machineTotal">マシーン別</a></li>
             </ul>
 
-            {{-- 今までの累計数 --}}
+            {{-- 今までのトレーニング --}}
+            <div id="totalTraining" class="sp1 area">
+                <div class="f1-5 tcenter">今までのトレーニング</div>
+                <div class="tcenter mb10">消費カロリー:{{ $calorie }}cal</div>
+
+                @foreach ($trainings as $training)
+                    {{-- pc --}}
+                    <div class="sp-none">
+                        <div class="bbd p10">
+                            <div class="dis he1-3rem">
+                                <div class="wi-30">日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                <div class="wi-30">{{ $training->machine->machine_name }}</div>
+                                <div class="wi-30">消費カロリー: {{ $training->calorie }}cal</div>
+                                <div class="popup-trigger cursor a" data-popup-image="{{ $training->machine->img }}">画像
+                                </div>
+                                <div class="image-popup">
+                                    <img src="" alt="Popup Image" class="popup-image">
+                                    <span class="close-button">×</span>
+                                </div>
+                            </div>
+                            <div class="dis">
+                                <div class="dis wi-15">
+                                    <div>時間:{{ $training->minutes }}分</div>
+                                    <div>{{ $training->seconds }}秒</div>
+                                </div>
+                                <div class="wi-15">速さ:{{ $training->speed }}km/h</div>
+                                <div class="wi-15">距離:{{ $training->distance }}km</div>
+                                <div class="wi-15">強度: {{ $training->strength }}</div>
+                                <div class="wi-15">重さ: {{ $training->weight }}kg</div>
+                                <div class="wi-15">回数: {{ $training->count }}回</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- スマホ --}}
+                    <div class="pc-none">
+                        <div class="bbd p10">
+                            <div class="flex">
+                                <div class="wi-80">
+                                    <div>日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                    <div class="mr10">{{ $training->machine->machine_name }}</div>
+                                    <div>消費カロリー: {{ $training->calorie }}cal</div>
+                                </div>
+                                <div class="wi-20">
+                                    <div><img src="{{ $training->machine->img }}" alt=""></div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex wi-50">
+                                    <div>時間:{{ $training->minutes }}分</div>
+                                    <div>{{ $training->seconds }}秒</div>
+                                </div>
+                                <div class="wi-50">速さ:{{ $training->speed }}km/h</div>
+                            </div>
+                            <div class="flex">
+                                <div class="wi-50">距離:{{ $training->distance }}km</div>
+                                <div class="wi-50">強度: {{ $training->strength }}</div>
+                            </div>
+                            <div class="flex">
+                                <div class="wi-50">重さ: {{ $training->weight }}kg</div>
+                                <div class="wi-50">回数: {{ $training->count }}回</div>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- 今月のトレーニング --}}
+            <div id="monthTotalTraining" class="sp1 area">
+                <div class="f1-5 tcenter">{{ $monthNumber }}今月のトレーニング</div>
+                <div class="tcenter mb10">消費カロリー:{{ $monthCalorie }}cal</div>
+                @foreach ($trainings as $training)
+                    @if ($monthNumber == $training->created_at->format('n'))
+                        {{-- pc --}}
+                        <div class="sp-none">
+                            <div class="bbd p10">
+                                <div class="dis he1-3rem">
+                                    <div class="wi-30">日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                    <div class="wi-30">{{ $training->machine->machine_name }}</div>
+                                    <div class="wi-30">消費カロリー: {{ $training->calorie }}cal</div>
+                                    <div class="popup-trigger cursor a"
+                                        data-popup-image="{{ $training->machine->img }}">画像
+                                    </div>
+                                    <div class="image-popup">
+                                        <img src="" alt="Popup Image" class="popup-image">
+                                        <span class="close-button">×</span>
+                                    </div>
+                                </div>
+                                <div class="dis">
+                                    <div class="dis wi-15">
+                                        <div>時間:{{ $training->minutes }}分</div>
+                                        <div>{{ $training->seconds }}秒</div>
+                                    </div>
+                                    <div class="wi-15">速さ:{{ $training->speed }}km/h</div>
+                                    <div class="wi-15">距離:{{ $training->distance }}km</div>
+                                    <div class="wi-15">強度: {{ $training->strength }}</div>
+                                    <div class="wi-15">重さ: {{ $training->weight }}kg</div>
+                                    <div class="wi-15">回数: {{ $training->count }}回</div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- スマホ --}}
+                        <div class="pc-none">
+                            <div class="bbd p10">
+                                <div class="flex">
+                                    <div class="wi-80">
+                                        <div>日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                        <div>{{ $training->machine->machine_name }}</div>
+                                        <div>消費カロリー: {{ $training->calorie }}cal</div>
+                                    </div>
+                                    <div class="wi-20">
+                                        <div><img src="{{ $training->machine->img }}" alt=""></div>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <div class="flex wi-50">
+                                        <div>時間:{{ $training->minutes }}分</div>
+                                        <div>{{ $training->seconds }}秒</div>
+                                    </div>
+                                    <div class="wi-50">速さ:{{ $training->speed }}km/h</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="wi-50">距離:{{ $training->distance }}km</div>
+                                    <div class="wi-50">強度: {{ $training->strength }}</div>
+                                </div>
+                                <div class="flex">
+                                    <div class="wi-50">重さ: {{ $training->weight }}kg</div>
+                                    <div class="wi-50">回数: {{ $training->count }}回</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+
+            {{-- 今までのエリア累計数 --}}
             <div id="total" class="sp1 area">
-                <div class="f1-5 tcenter">今までの累計数</div>
+                <div class="f1-5 tcenter">今までのエリア累計数</div>
                 <div class="tcenter mb10">消費カロリー:{{ $calorie }}cal</div>
 
                 <div class="grid3 sp-grid2">
@@ -26,7 +163,9 @@
                         @endphp
 
                         {{-- カード --}}
-                        <div class="dis p10 mb10 original-box-shadow flex">
+                        <div class="dis p10 mb10 original-box-shadow flex linkbox">
+                            {{-- カード全体のリンクこのエリアを鍛えるマシーン一覧ページへ --}}
+                            <a href="/record/machineserch/{{ $area->id }}"></a>
                             {{-- 鍛えるエリアを表示 --}}
                             <div class="wi-60">
                                 <div>【{{ $area->training_area }}】</div>
@@ -61,10 +200,10 @@
                 </div>
             </div>
 
-            {{-- 今月の累計 --}}
+            {{-- 今月のエリア累計 --}}
             <div id="monthTotal" class="sp1 area">
 
-                <div class="f1-5 tcenter">{{ $monthNumber }}月の累計数</div>
+                <div class="f1-5 tcenter">{{ $monthNumber }}月のエリア累計数</div>
                 <div class="tcenter mb10">消費カロリー:{{ $monthCalorie }}cal</div>
                 <div class="grid3 sp-grid2">
                     @foreach ($areaWithTraining as $area)
@@ -75,7 +214,9 @@
                         @endphp
 
                         {{-- カード --}}
-                        <div class="dis p10 mb10 original-box-shadow flex">
+                        <div class="dis p10 mb10 original-box-shadow flex linkbox">
+                            {{-- カード全体のリンクこのエリアを鍛えるマシーン一覧ページへ --}}
+                            <a href="/record/machineserch/{{ $area->id }}"></a>
                             {{-- 鍛えるエリアを表示 --}}
                             <div class="wi-60">
                                 <div>{{ $area->training_area }}</div>
@@ -123,15 +264,14 @@
                         <div class="p10 original-box-shadow">
                             <div class="mb10"><a class="a"
                                     href="/record/machine/{{ $machine->id }}">{{ $machine->machine_name }}</a></div>
-                            <div class="zoomIn"><a href="/record/machine/{{ $machine->id }}"><span class="mask"><img
-                                            src="{{ $machine->img }}"></span></a>
+                            <div class="zoomIn"><a href="/record/machine/{{ $machine->id }}"><span
+                                        class="mask"><img src="{{ $machine->img }}"></span></a>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
-
     @else
         <div class="ccenter3">トレーニングエリア・マシーン名を登録しよう</div>
     @endif
@@ -143,6 +283,26 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-4-1/js/5-4-1.js"></script>
 <script>
+    // モーダル
+    const popupTrigger = document.querySelectorAll('.popup-trigger');
+    const popup = document.querySelector('.image-popup');
+    const popupImage = document.querySelector('.popup-image');
+    const closeButton = document.querySelector('.close-button');
+
+    popupTrigger.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const imagePath = trigger.getAttribute('data-popup-image');
+            popupImage.src = imagePath;
+            popup.style.opacity = '1';
+            popup.style.pointerEvents = 'auto';
+        });
+    });
+
+    closeButton.addEventListener('click', () => {
+        popup.style.opacity = '0';
+        popup.style.pointerEvents = 'none';
+    });
+
     //任意のタブにURLからリンクするための設定
     function GethashID(hashIDName) {
         if (hashIDName) {
@@ -180,7 +340,70 @@
     });
 </script>
 </div>
+
 <style>
+    .he1-3rem {
+        height: 1.3rem;
+    }
+
+    /* モーダル */
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    .image-popup {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 30%;
+        height: 70%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .popup-image {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #fff;
+        font-size: 48px;
+        cursor: pointer;
+    }
+
+    /* ここまでモーダル */
+
+    .linkbox {
+        position: relative;
+    }
+
+    .linkbox>a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
     .zoomIn img {
         transform: scale(1);
         transition: .3s ease-in-out;

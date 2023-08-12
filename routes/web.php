@@ -6,6 +6,7 @@ use App\Http\Livewire\Counter;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\JimTop;
 use App\Http\Livewire\MachineEdit;
+use App\Http\Livewire\MachineSerch;
 use App\Http\Livewire\MachineShow;
 use App\Http\Livewire\Record;
 use App\Http\Livewire\RecordMachine;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/record', Record::class)->name('record');
     Route::get('/record/machine/{id}', RecordMachine::class)->name('recordMachine');
+    Route::get('/record/machineserch/{id}', MachineSerch::class)->name('machineSerch');
     Route::get('/weight', UserWeight::class)->name('weight');
 });
 
