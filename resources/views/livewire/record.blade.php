@@ -82,10 +82,10 @@
 
             {{-- 今月のトレーニング --}}
             <div id="monthTotalTraining" class="sp1 area">
-                <div class="f1-5 tcenter">{{ $monthNumber }}今月のトレーニング</div>
+                <div class="f1-5 tcenter">{{ $monthNumber }}月のトレーニング</div>
                 <div class="tcenter mb10">消費カロリー:{{ $monthCalorie }}cal</div>
                 @foreach ($trainings as $training)
-                    @if ($monthNumber == $training->created_at->format('n'))
+                    @if ($monthNumber == $training->created_at->format('Y-n'))
                         {{-- pc --}}
                         <div class="sp-none">
                             <div class="bbd p10">
@@ -226,7 +226,7 @@
                                         {{-- トレーニング者とログイン者が一緒ならば --}}
                                         @if ($training->user_id === $loginUserId)
                                             {{-- ここで今月だけのif文 今月とデータが作られた月が一緒ならば --}}
-                                            @if ($monthNumber == $training->created_at->format('n'))
+                                            @if ($monthNumber == $training->created_at->format('Y-n'))
                                                 @php
                                                     // 合計値を計算
                                                     $weight += ($training->weight * $training->count) / 1000;
@@ -276,226 +276,247 @@
         <div class="ccenter3">トレーニングエリア・マシーン名を登録しよう</div>
     @endif
 
-</div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-4-1/js/5-4-1.js"></script>
+    <script>
+        // モーダル
+        const popupTrigger = document.querySelectorAll('.popup-trigger');
+        const popup = document.querySelector('.image-popup');
+        const popupImage = document.querySelector('.popup-image');
+        const closeButton = document.querySelector('.close-button');
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-4-1/js/5-4-1.js"></script>
-<script>
-    // モーダル
-    const popupTrigger = document.querySelectorAll('.popup-trigger');
-    const popup = document.querySelector('.image-popup');
-    const popupImage = document.querySelector('.popup-image');
-    const closeButton = document.querySelector('.close-button');
-
-    popupTrigger.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const imagePath = trigger.getAttribute('data-popup-image');
-            popupImage.src = imagePath;
-            popup.style.opacity = '1';
-            popup.style.pointerEvents = 'auto';
-        });
-    });
-
-    closeButton.addEventListener('click', () => {
-        popup.style.opacity = '0';
-        popup.style.pointerEvents = 'none';
-    });
-
-    //任意のタブにURLからリンクするための設定
-    function GethashID(hashIDName) {
-        if (hashIDName) {
-            //タブ設定
-            $('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
-                var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得 
-                if (idName ==
-                    hashIDName
-                ) { //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
-                    var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
-                    $('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
-                    $(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
-                    //表示させるエリア設定
-                    $(".area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
-                    $(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加 
-                }
+        popupTrigger.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const imagePath = trigger.getAttribute('data-popup-image');
+                popupImage.src = imagePath;
+                popup.style.opacity = '1';
+                popup.style.pointerEvents = 'auto';
             });
+        });
+
+        closeButton.addEventListener('click', () => {
+            popup.style.opacity = '0';
+            popup.style.pointerEvents = 'none';
+        });
+
+
+
+
+        // 2つ目のタブ内でも同じコードを使用して画像表示を設定
+        const popupTriggerInTab2 = document.querySelectorAll('#monthTotalTraining .popup-trigger');
+        const popupInTab2 = document.querySelector('#monthTotalTraining .image-popup');
+        const popupImageInTab2 = document.querySelector('#monthTotalTraining .popup-image');
+        const closeButtonInTab2 = document.querySelector('#monthTotalTraining .close-button');
+
+        popupTriggerInTab2.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const imagePath = trigger.getAttribute('data-popup-image');
+                popupImageInTab2.src = imagePath;
+                popupInTab2.style.opacity = '1';
+                popupInTab2.style.pointerEvents = 'auto';
+            });
+        });
+
+        closeButtonInTab2.addEventListener('click', () => {
+            popupInTab2.style.opacity = '0';
+            popupInTab2.style.pointerEvents = 'none';
+        });
+
+        //任意のタブにURLからリンクするための設定
+        function GethashID(hashIDName) {
+            if (hashIDName) {
+                //タブ設定
+                $('.tab li').find('a').each(function() { //タブ内のaタグ全てを取得
+                    var idName = $(this).attr('href'); //タブ内のaタグのリンク名（例）#lunchの値を取得 
+                    if (idName ==
+                        hashIDName
+                    ) { //リンク元の指定されたURLのハッシュタグ（例）http://example.com/#lunch←この#の値とタブ内のリンク名（例）#lunchが同じかをチェック
+                        var parentElm = $(this).parent(); //タブ内のaタグの親要素（li）を取得
+                        $('.tab li').removeClass("active"); //タブ内のliについているactiveクラスを取り除き
+                        $(parentElm).addClass("active"); //リンク元の指定されたURLのハッシュタグとタブ内のリンク名が同じであれば、liにactiveクラスを追加
+                        //表示させるエリア設定
+                        $(".area").removeClass("is-active"); //もともとついているis-activeクラスを取り除き
+                        $(hashIDName).addClass("is-active"); //表示させたいエリアのタブリンク名をクリックしたら、表示エリアにis-activeクラスを追加 
+                    }
+                });
+            }
         }
-    }
 
-    //タブをクリックしたら
-    $('.tab a').on('click', function() {
-        var idName = $(this).attr('href'); //タブ内のリンク名を取得  
-        GethashID(idName); //設定したタブの読み込みと
-        return false; //aタグを無効にする
-    });
-
-
-    // 上記の動きをページが読み込まれたらすぐに動かす
-    $(window).on('load', function() {
-        $('.tab li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
-        $('.area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
-        var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
-        GethashID(hashName); //設定したタブの読み込み
-    });
-</script>
-</div>
-
-<style>
-    .he1-3rem {
-        height: 1.3rem;
-    }
-
-    /* モーダル */
-    body {
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #f0f0f0;
-    }
-
-    .image-popup {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        width: 30%;
-        height: 70%;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-
-    .popup-image {
-        max-width: 90%;
-        max-height: 90%;
-        object-fit: contain;
-    }
-
-    .close-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        color: #fff;
-        font-size: 48px;
-        cursor: pointer;
-    }
-
-    /* ここまでモーダル */
-
-    .linkbox {
-        position: relative;
-    }
-
-    .linkbox>a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-    .zoomIn img {
-        transform: scale(1);
-        transition: .3s ease-in-out;
-        /*移り変わる速さを変更したい場合はこの数値を変更*/
-    }
-
-    .zoomIn a:hover img {
-        /*hoverした時の変化*/
-        transform: scale(1.2);
-        /*拡大の値を変更したい場合はこの数値を変更*/
-    }
-
-    /*　画像のマスク　*/
-
-    .mask {
-        display: block;
-        line-height: 0;
-        /*行の高さを0にする*/
-        overflow: hidden;
-        /*拡大してはみ出る要素を隠す*/
-    }
-
-    /*========= レイアウトのためのCSS ===============*/
+        //タブをクリックしたら
+        $('.tab a').on('click', function() {
+            var idName = $(this).attr('href'); //タブ内のリンク名を取得  
+            GethashID(idName); //設定したタブの読み込みと
+            return false; //aタグを無効にする
+        });
 
 
-    /*tabの形状*/
-    .tab {
-        display: flex;
-        flex-wrap: wrap;
-    }
+        // 上記の動きをページが読み込まれたらすぐに動かす
+        $(window).on('load', function() {
+            $('.tab li:first-of-type').addClass("active"); //最初のliにactiveクラスを追加
+            $('.area:first-of-type').addClass("is-active"); //最初の.areaにis-activeクラスを追加
+            var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
+            GethashID(hashName); //設定したタブの読み込み
+        });
+    </script>
 
-    .tab li a {
-        display: block;
-        background: #dddddd7f;
-        margin: 0 2px;
-        padding: 10px 20px;
-    }
+    <style>
+        .he1-3rem {
+            height: 1.3rem;
+        }
 
-    /*liにactiveクラスがついた時の形状*/
-    .tab li.active a {
-        background: #ffffff26;
-    }
+        /* モーダル */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
 
-
-    /*エリアの表示非表示と形状*/
-    .area {
-        display: none;
-        /*はじめは非表示*/
-        opacity: 0;
-        /*透過0*/
-        background: #ffffff26;
-        padding: 50px 20px;
-    }
-
-    /*areaにis-activeというクラスがついた時の形状*/
-    .area.is-active {
-        display: block;
-        /*表示*/
-        animation-name: displayAnime;
-        /*ふわっと表示させるためのアニメーション*/
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
-    }
-
-    @keyframes displayAnime {
-        from {
+        .image-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 30%;
+            height: 70%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
             opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        to {
-            opacity: 1;
+        .popup-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
         }
-    }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 48px;
+            cursor: pointer;
+        }
+
+        /* ここまでモーダル */
+
+        .linkbox {
+            position: relative;
+        }
+
+        .linkbox>a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .zoomIn img {
+            transform: scale(1);
+            transition: .3s ease-in-out;
+            /*移り変わる速さを変更したい場合はこの数値を変更*/
+        }
+
+        .zoomIn a:hover img {
+            /*hoverした時の変化*/
+            transform: scale(1.2);
+            /*拡大の値を変更したい場合はこの数値を変更*/
+        }
+
+        /*　画像のマスク　*/
+
+        .mask {
+            display: block;
+            line-height: 0;
+            /*行の高さを0にする*/
+            overflow: hidden;
+            /*拡大してはみ出る要素を隠す*/
+        }
+
+        /*========= レイアウトのためのCSS ===============*/
+
+
+        /*tabの形状*/
+        .tab {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tab li a {
+            display: block;
+            background: #dddddd7f;
+            margin: 0 2px;
+            padding: 10px 20px;
+        }
+
+        /*liにactiveクラスがついた時の形状*/
+        .tab li.active a {
+            background: #ffffff26;
+        }
+
+
+        /*エリアの表示非表示と形状*/
+        .area {
+            display: none;
+            /*はじめは非表示*/
+            opacity: 0;
+            /*透過0*/
+            background: #ffffff26;
+            padding: 50px 20px;
+        }
+
+        /*areaにis-activeというクラスがついた時の形状*/
+        .area.is-active {
+            display: block;
+            /*表示*/
+            animation-name: displayAnime;
+            /*ふわっと表示させるためのアニメーション*/
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes displayAnime {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
 
 
 
-    /*========= レイアウトのためのCSS ===============*/
+        /*========= レイアウトのためのCSS ===============*/
 
-    .wrapper {
-        width: 100%;
-        max-width: 960px;
-        margin: 30px auto;
-        background: #ffffff26;
-    }
+        .wrapper {
+            width: 100%;
+            max-width: 960px;
+            margin: 30px auto;
+            background: #ffffff26;
+        }
 
-    .area h2 {
-        font-size: 1.3rem;
-        margin: 0 0 20px 10px;
-    }
+        .area h2 {
+            font-size: 1.3rem;
+            margin: 0 0 20px 10px;
+        }
 
-    .area li {
-        padding: 10px;
-        border-bottom: 1px solid #dddddd7f;
-    }
-</style>
+        .area li {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd7f;
+        }
+    </style>
+
+</div>

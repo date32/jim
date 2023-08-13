@@ -23,8 +23,8 @@ class Record extends Component
     {
         // 現在の日付を取得
         $currentDate = Carbon::now();
-        // 今月の月数を取得（1〜12の数値）
-        $this->monthNumber = $currentDate->month;
+        // 今月の西暦と月数を取得（1〜12の数値）
+        $this->monthNumber = $currentDate->format('Y-n');
 
         // トレーニングとマシーンをリレーションしてエリアを取得
         $this->areaWithTraining = TrainingArea::with('machineForTrainingAreas.machine.trainings')->get();
@@ -40,7 +40,7 @@ class Record extends Component
         foreach($this->trainings as $training) {
             // 今までの消費カロリーの累計を計算
             $this->calorie += $training->calorie;
-            if($this->monthNumber == $training->created_at->format('n')) {
+            if($this->monthNumber == $training->created_at->format('Y-n')) {
                 // 今月の消費カロリーの累計を計算
                 $this->monthCalorie += $training->calorie;
             }
