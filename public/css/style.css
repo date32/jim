@@ -63,6 +63,11 @@
     display: flex;
     justify-content: flex-end;
 }
+.grid2 {  
+    display: grid;    
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+}
 .grid3 {  
     display: grid;    
     grid-template-columns: 32% 32% 32%;
@@ -199,19 +204,29 @@
 .wi-2rem {
     width: 2rem;
 }
+.he1rem {
+    height: 1rem;
+}
 .he2rem {
     height: 2rem;
 }
 .he3rem {
     height: 3rem;
 }
-
+.he4rem {
+    height: 4rem;
+}
 .he5rem {
     height: 5rem;
 }
-
 .he6rem {
     height: 6rem;
+}
+.he7rem {
+    height: 7rem;
+}
+.he8rem {
+    height: 8rem;
 }
 
 .he0-5 {
@@ -484,6 +499,9 @@
 .b {
     border: solid 2px;
 }
+.d {
+    border: dashed 2px;
+}
 
 .b1 {
     border: solid 1px;
@@ -741,12 +759,88 @@
     opacity: 0.5;
     transform: translate(-50%, 0);
 }
+.jim-img17::before {
+    content: "";
+    background-image: url(../img/jim17.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+}
+.jim-img20::before {
+    content: "";
+    background-image: url(../img/jim20.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+}
+.jim-img21::before {
+    content: "";
+    background-image: url(../img/jim21.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+}
+.jim-img22::before {
+    content: "";
+    background-image: url(../img/jim22.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+}
+.jim-img23::before {
+    content: "";
+    background-image: url(../img/jim23.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+}
 
 @media(max-width: 600px) {
     .head-sp-he {
         height: 170px;
     }
 
+    .sp-10 {
+        width: 10%;
+    }
+    .sp-20 {
+        width: 20%;
+    }
     .sp-30 {
         width: 30%;
     }
@@ -771,13 +865,22 @@
     .sp-100 {
         width: 100%;
     }
+    .sp-he1rem {
+        height: 1rem;
+    }
+    .sp-he2rem {
+        height: 2rem;
+    }
+    .sp-he3rem {
+        height: 3rem;
+    }
 
     
     .c3 {
         color: red;;
     }
     .sp1 {
-        width: 360px;
+        width: 360px !important;
     }
 
     .dis {
@@ -800,6 +903,11 @@
 
     .flex {
         display: flex !important;
+    }
+    .flex5 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .wi5 {
@@ -829,6 +937,12 @@
 .original-box-shadow {
     color: #333333;
     background-color: #dddddd;
+    border-radius: 3px;
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
+  }
+  .original-box-shadow2 {
+    color: #333333;
+    background-color: #dddddd82;
     border-radius: 3px;
     box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.4);
   }

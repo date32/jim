@@ -1,30 +1,39 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img20">
     <livewire:header />
+    <div class="sp-he1rem"></div>
     <livewire:menu-list />
     <div class="f2 tcenter mt30">トレーニングエリア一覧</div>
-    
-    <div class="wi10 ccenter3 mb20 sp-none">
+
+    {{-- pc --}}
+    <div class="wi10 ccenter3 sp-none mb20">
         @if (!$delete_yes_no)
-            <table>
-                <tr class="bb he0-5">
-                    <th class="wi0-5">ID</th>
-                    <th class="wi3">トレーニングエリア</th>
-                    <th class="wi4"></th>
-                    <th class="wi1">変更</th>
-                    <th class="wi1">削除</th>
-                </tr>
-                @foreach ($areas as $area)
-                    <tr class="bbd">
-                        <td class="tcenter">{{ $area->id }}</td>
-                        <td class="tcenter">{{ $area->training_area }}</td>
-                        <td><img src="{{ $area->area_img }}" alt="" class="wi3"></td>
-                        <td><button class="original-button3"
-                                onclick="location.href='/admin/training_area/edit/{{ $area->id }}'">変更</button></td>
-                        <td><button class="original-button2"
-                                wire:click="confirmTrainigAreaDelete({{ $area->id }})">削除</button></td>
-                    </tr>
-                @endforeach
-            </table>
+            <div class="dis p10 bb">
+                <div class="wi-10 sp-none">ID</div>
+                <div class="wi-60 sp-none">トレーニングエリア</div>
+                <div class="wi-15 tcenter sp-none">変更</div>
+                <div class="wi-15 tcenter sp-none">削除</div>
+            </div>
+
+            @foreach ($areas as $area)
+                <div class="dis p10 bbd">
+                    <div class="wi-10 ccenter4">{{ $area->id }}</div>
+                    <div class="dis wi-60">
+                        <div class="wi-30 ccenter4">{{ $area->training_area }}
+                        </div>
+                        <div class="wi-30"><img src="{{ $area->area_img }}" alt=""></div>
+                    </div>
+                    <div class="dis wi-30">
+                        <div class="wi-50 ccenter4">
+                            <button class="original-button3 ccenter3"
+                                onclick="location.href='/admin/training_area/edit/{{ $area->id }}'">変更</button>
+                        </div>
+                        <div class="wi-50 ccenter4">
+                            <button class="original-button2 ccenter3"
+                                wire:click="confirmTrainigAreaDelete({{ $area->id }})">削除</button>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         @endif
 
         @if ($delete_yes_no)
@@ -39,47 +48,37 @@
     </div>
 
     {{-- スマホ用 --}}
-    <div class="sp1 ccenter3 mb30 pc-none">
+    <div class="sp1 ccenter3 pc-none mb20">
         @if (!$delete_yes_no)
-            <table class="mb30">
-                <tr class="bb he0-5">
-                    <th>ID</th>
-                    <th class="wi2">トレーニングエリア</th>
-                    {{-- <th class=""></th> --}}
-                    {{-- <th class="">変更</th> --}}
-                    <th class="">変更・削除</th>
-                </tr>
-                @foreach ($areas as $area)
-                    <tr class="bbd">
-                        <td class="tcenter">{{ $area->id }}</td>
-                        <td>
-                            <div class="tcenter mb10">{{ $area->training_area }}</div>
-                            <div><img class="ccenter3 wi1-5" src="{{ $area->area_img }}" alt="" class="wi1">
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <button class="original-button3 mb10"
+            @foreach ($areas as $area)
+                <div class="dis p10 bbd">
+                    <div><span>ID:</span>{{ $area->id }}</div>
+                    <div><span>トレーニングエリア:</span>{{ $area->training_area }}</div>
+                    <div class="flex wimax">
+                        <div class="wi-50 mr20"><img src="{{ $area->area_img }}" alt=""></div>
+                        <div>
+                            <div class="mb10">
+                                <button class="original-button3 ccenter3"
                                     onclick="location.href='/admin/training_area/edit/{{ $area->id }}'">変更</button>
                             </div>
                             <div>
-                                <button class="original-button2"
+                                <button class="original-button2 ccenter3"
                                     wire:click="confirmTrainigAreaDelete({{ $area->id }})">削除</button>
                             </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         @endif
 
         @if ($delete_yes_no)
-            <div class="mt20 mb20">
-                <p class="tcenter">本当に{{ $name }}を削除しますか？</p>
+            <div class="wimax ccenter3 mt20">
+                <p class="tcenter mb10">本当に{{ $name }}を削除しますか？</p>
                 <div class="flex ccenter">
                     <p class="cursor original-button3" wire:click="delete_yes">はい</p>
                     <p class="cursor original-button2" wire:click="delete_no">いいえ</p>
                 </div>
             </div>
         @endif
-    </div> 
+    </div>
 </div>

@@ -1,5 +1,6 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img21">
     <livewire:header />
+    <div class="sp-he1rem"></div>
     <livewire:menu-list />
     <div class="f2 tcenter mt30">ユーザー一覧</div>
     <div class="ccenter3 wi5 mt30 mb30 sp1">

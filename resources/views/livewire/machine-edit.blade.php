@@ -1,75 +1,55 @@
-<div class="wi12 ccenter3 sp1">
+<div class="wi12 ccenter3 sp1 jim-img23">
     <livewire:header />
+    <div class="sp-he1rem"></div>
+    <livewire:menu-list />
+
     <div class="f2 tcenter mt30 mb30">マシーン変更</div>
 
     {{-- pc用 --}}
-    <div class="dis ccenter sp-none">
-
-        {{-- 変更前 --}}
-        <table class="wi5">
-            <tr>
-                <th class="wi1-5"></th>
-                <th class="wi1-5"></th>
-                <th class="wi2"></th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div>ID: {{ $machine->id }}</div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div>マシーン名:{{ $machine->machine_name }}</div>
-                </td>
-                <td>
-                    <div><img src="{{ $machine->img }}" alt=""></div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div>タイプ：{{ $machine->type }}</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>トレーニングエリア:</div>
-                </td>
-                <td colspan="2">
+    <div class="dis mb20 sp-none">
+        <div class="wi-40">
+            <div>ID: {{ $machine->id }}</div>
+            <div>マシーン名:{{ $machine->machine_name }}</div>
+            <div>タイプ：{{ $machine->type }}</div>
+            <div class="dis">
+                <div class="wi-50 mr20"><img src="{{ $machine->img }}" alt=""></div>
+                <div class="wi-50">
+                    <div class="mb10">トレーニングエリア:</div>
                     @foreach ($machine->machineForTrainingAreas as $area)
-                        <div class="dis">
-                            <div class="wi1-5">{{ $area->trainingArea->training_area }}</div>
-                            <div><img class="wi2" src="{{ $area->trainingArea->area_img }}" alt=""></div>
+                        <div class="original-box-shadow2 p10 mb10">
+                            <div>{{ $area->trainingArea->training_area }}</div>
+                            <div><img src="{{ $area->trainingArea->area_img }}" alt=""></div>
                         </div>
                     @endforeach
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </div>
 
+        <div class="wi-20 ccenter4 tcenter f2">⇒<br>⇒<br>⇒</div>
 
-        <div class="ccenter4 tcenter f2 wi1">⇒</div>
-
-
-        {{-- 変更後 --}}
-        <div class="wi5">
+        <div class="wi-40">
             <form wire:submit.prevent="machineUpdate({{ $machine->id }})">
                 <div>ID: {{ $machine->id }}</div>
                 <div>マシーン名: <input type="text" wire:model="machine_name"></div>
-                <div class="he0-5">
+                <div class="he2rem">
                     @error('machine_name')
-                        <div>{{ $message }}</div>
+                        <div class="c3">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="mb30"><input type="file" wire:model="machine_img"></div>
                 <div class="mb30">タイプ：{{ $machine->type }}</div>
+                <div class="mb30"><input type="file" wire:model="machine_img"></div>
                 <div class="mb30">
-                    <div>トレーニングエリア</div>
-                    <div class="dis4">
+                    <div>トレーニングエリア:</div>
+                    <div class="grid4">
                         @foreach ($training_areas as $area)
-                            <div>
-                                <input type="checkbox" id="{{ $area->training_area }}" wire:model="selectedOptions"
-                                    value="{{ $area->id }}">
-                                <label for="{{ $area->training_area }}">{{ $area->training_area }}</label>
-                                <img class="wi1" src="{{ $area->area_img }}" alt="">
+                            <div class="original-box-shadow2 p10">
+                                <div class="mb10">
+                                    <input type="checkbox" id="{{ $area->training_area }}" wire:model="selectedOptions"
+                                        value="{{ $area->id }}">
+                                    <label for="{{ $area->training_area }}">{{ $area->training_area }}</label>
+                                </div>
+                                <label for="{{ $area->training_area }}"><img class="wi1"
+                                        src="{{ $area->area_img }}" alt=""></label>
                             </div>
                         @endforeach
                     </div>
@@ -79,57 +59,58 @@
                 </div>
             </form>
         </div>
-
-       
-
     </div>
 
     {{-- スマホ用 --}}
-    <div class="pc-none">
+    <div class="pc-none sp1">
         <div>ID: {{ $machine->id }}</div>
-        <div>マシーン名:{{ $machine->machine_name }}</div>
-        <div><img class="wi3" src="{{ $machine->img }}" alt=""></div>
-        <div>タイプ：{{ $machine->type }}</div>
-        <div>トレーニングエリア:</div>
-        @foreach ($machine->machineForTrainingAreas as $area)
-                <div>{{ $area->trainingArea->training_area }}</div>
-                <div><img class="wi3" src="{{ $area->trainingArea->area_img }}" alt=""></div>
-                <div class="mt10 mb10 bbd"></div>
-        @endforeach
+        <div class="flex mb10">
+            <div class="sp-70">マシーン名:{{ $machine->machine_name }}</div>
+            <div class="sp-30">タイプ：{{ $machine->type }}</div>
+        </div>
 
-        <div class="ccenter4 tcenter f2 mt20 mb20">↓↓↓↓↓↓↓↓↓↓</div>
+        <div class="flex mb20">
+            <div class="wi-50 mr20"><img src="{{ $machine->img }}" alt=""></div>
+
+            <div class="wi-50">
+                <div>トレーニングエリア:</div>
+                @foreach ($machine->machineForTrainingAreas as $area)
+                <div class="mb10">
+                    <div>{{ $area->trainingArea->training_area }}</div>
+                    <div><img src="{{ $area->trainingArea->area_img }}" alt=""></div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="ccenter4 tcenter f2 mb20">↓↓↓</div>
 
         <form wire:submit.prevent="machineUpdate({{ $machine->id }})">
             <div>ID: {{ $machine->id }}</div>
             <div>マシーン名: <input type="text" wire:model="machine_name"></div>
-            <div class="he0-5">
+            <div class="he2rem">
                 @error('machine_name')
-                    <div>{{ $message }}</div>
+                    <div class="c3">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="mb30"><input type="file" wire:model="machine_img"></div>
-            <div class="mb30">タイプ：{{ $machine->type }}</div>
+            <div class="mb10"><input type="file" wire:model="machine_img"></div>
+            <div class="mb10">タイプ：{{ $machine->type }}</div>
             <div class="mb30">
                 <div>トレーニングエリア</div>
-                <div class="dis4">
+                <div class="grid3">
                     @foreach ($training_areas as $area)
-                        <div>
+                    <div class="original-box-shadow2 p10">
+                        <div class="mb10">
                             <input type="checkbox" id="{{ $area->training_area }}" wire:model="selectedOptions"
                                 value="{{ $area->id }}">
-                            <label for="{{ $area->training_area }}">{{ $area->training_area }}</label>
-                            <img class="wi1" src="{{ $area->area_img }}" alt="">
+                                <label for="{{ $area->training_area }}">{{ $area->training_area }}</label>
                         </div>
+                        <label for="{{ $area->training_area }}"><img class="wi1" src="{{ $area->area_img }}" alt=""></label>
+                    </div>
                     @endforeach
                 </div>
             </div>
-            <div>
-                <button type="submit" class="original-button">変更</button>
-            </div>
+            <div><button type="submit" class="original-button ccenter3 mb20">変更</button></div>
         </form>
-
-       
-           
-        
     </div>
-    <livewire:menu-list />
 </div>
