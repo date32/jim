@@ -10,6 +10,7 @@ use App\Http\Livewire\MachineSerch;
 use App\Http\Livewire\MachineShow;
 use App\Http\Livewire\Record;
 use App\Http\Livewire\RecordMachine;
+use App\Http\Livewire\Test;
 use App\Http\Livewire\TrainingAreaEdit;
 use App\Http\Livewire\TrainingAreaShow;
 use App\Http\Livewire\UserShow;
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', JimTop::class)->name('top');
+Route::get('/test', Test::class)->name('top');
 
 Route::middleware('auth')->middleware('admin')->group(function() {
     Route::get('/admin', Admin::class)->name('admin');

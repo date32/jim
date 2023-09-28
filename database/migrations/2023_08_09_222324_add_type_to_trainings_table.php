@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('trainings', function (Blueprint $table) {
-            $table->decimal('calorie')->nullable();
-            $table->integer('strength')->nullable();
-        });
+        // Schema::table('trainings', function (Blueprint $table) {
+        //     $table->decimal('calorie')->nullable();
+        //     $table->integer('strength')->nullable();
+        // });
     }
 
     /**
@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('trainings', function (Blueprint $table) {
-            $table->dropColumn('calorie');
-            $table->dropColumn('strength');
-        });
+        // Schema::table('trainings', function (Blueprint $table) {
+        //     $table->dropColumn('calorie');
+        //     $table->dropColumn('strength');
+        // });
     }
 };

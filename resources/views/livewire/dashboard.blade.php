@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1 jim-img2">
+<div class="wi12 ccenter3 sp-90 jim-img2">
     <livewire:header />
     <div class="f2 tcenter mt30">今日のトレーニング</div>
 

@@ -1,7 +1,7 @@
-<div class="wi12 ccenter3 sp1 jim-img1">
+<div class="wi12 ccenter3 sp-100 jim-img1">
     @if ($login === null)
         <div class="tcenter f2 ft1 pt20">My JIM life</div>
-        <div class="wi5 ccenter3 tr ft1 mb20">ver.4</div>
+        <div class="wi5 ccenter3 tr ft1 mb20">ver.5</div>
 
         <form wire:submit.prevent="login">
 

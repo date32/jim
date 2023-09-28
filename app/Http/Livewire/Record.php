@@ -8,13 +8,18 @@ use App\Models\TrainingArea;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Record extends Component
 {
+    use WithPagination;
+
     public $areaWithTraining;
     public $loginUserId;
     public $machines;
-    public $trainings;
+    // private $trainings;
+    // protected $trainings;
+    // public $trainings;
     public $monthNumber;
     public $calorie;
     public $monthCalorie;
@@ -31,13 +36,14 @@ class Record extends Component
         // ログインユーザーのIDを取得
         $this->loginUserId = Auth::user()->id;
         $this->machines = Machine::get();
-        // ログインユーザーのトレーニングを取得
-        $this->trainings = Training::where('user_id', $this->loginUserId)->orderBy('created_at', 'desc')->with('machine')->get();
+        // ログインユーザーのトレーニングを取得→ページネーションにしたので下のrenderメソッドで取得する
+        // $this->trainings = Training::where('user_id', $this->loginUserId)->orderBy('created_at', 'desc')->with('machine')->paginate(3);
 
         // カロリー計算
         $this->calorie = 0;
         $this->monthCalorie = 0;
-        foreach($this->trainings as $training) {
+        $trainings = Training::where('user_id', $this->loginUserId)->orderBy('created_at', 'desc')->with('machine')->get();
+        foreach($trainings as $training) {
             // 今までの消費カロリーの累計を計算
             $this->calorie += $training->calorie;
             if($this->monthNumber == $training->created_at->format('Y-n')) {
@@ -48,6 +54,8 @@ class Record extends Component
     }
     public function render()
     {
-        return view('livewire.record');
+        return view('livewire.record', [
+            'trainings' => Training::where('user_id', $this->loginUserId)->orderBy('created_at', 'desc')->with('machine')->paginate(10),
+        ]);
     }
 }

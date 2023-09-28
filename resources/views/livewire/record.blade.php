@@ -1,4 +1,4 @@
-<div class="wi12 ccenter3 sp1 jim-img3">
+<div class="wi12 ccenter3 sp-90 jim-img3">
     <livewire:header />
     <div class="f2 tcenter mt30 mb20">トレーニングの記録</div>
 
@@ -17,67 +17,76 @@
             <div id="totalTraining" class="sp1 area">
                 <div class="f1-5 tcenter">今までのトレーニング</div>
                 <div class="tcenter mb10">消費カロリー:{{ $calorie }}cal</div>
-
-                @foreach ($trainings as $training)
-                    {{-- pc --}}
-                    <div class="sp-none">
-                        <div class="bbd p10">
-                            <div class="dis he1-3rem">
-                                <div class="wi-30">日付: {{ $training->created_at->format('Y年m月d日') }}</div>
-                                <div class="wi-30">{{ $training->machine->machine_name }}</div>
-                                <div class="wi-30">消費カロリー: {{ $training->calorie }}cal</div>
-                                <div class="popup-trigger cursor a" data-popup-image="{{ $training->machine->img }}">画像
+                @if ($trainings)
+                    @foreach ($trainings as $training)
+                        {{-- pc --}}
+                        <div class="sp-none">
+                            <div class="bbd p10">
+                                <div class="dis he1-3rem">
+                                    <div class="wi-30">日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                    <div class="wi-30">{{ $training->machine->machine_name }}</div>
+                                    <div class="wi-30">消費カロリー: {{ $training->calorie }}cal</div>
+                                    <div class="popup-trigger cursor a"
+                                        data-popup-image="{{ $training->machine->img }}">画像
+                                    </div>
+                                    <div class="image-popup">
+                                        <img src="" alt="Popup Image" class="popup-image">
+                                        <span class="close-button">×</span>
+                                    </div>
                                 </div>
-                                <div class="image-popup">
-                                    <img src="" alt="Popup Image" class="popup-image">
-                                    <span class="close-button">×</span>
+                                <div class="dis">
+                                    <div class="dis wi-15">
+                                        <div>時間:{{ $training->minutes }}分</div>
+                                        <div>{{ $training->seconds }}秒</div>
+                                    </div>
+                                    <div class="wi-15">速さ:{{ $training->speed }}km/h</div>
+                                    <div class="wi-15">距離:{{ $training->distance }}km</div>
+                                    <div class="wi-15">強度: {{ $training->strength }}</div>
+                                    <div class="wi-15">重さ: {{ $training->weight }}kg</div>
+                                    <div class="wi-15">回数: {{ $training->count }}回</div>
                                 </div>
-                            </div>
-                            <div class="dis">
-                                <div class="dis wi-15">
-                                    <div>時間:{{ $training->minutes }}分</div>
-                                    <div>{{ $training->seconds }}秒</div>
-                                </div>
-                                <div class="wi-15">速さ:{{ $training->speed }}km/h</div>
-                                <div class="wi-15">距離:{{ $training->distance }}km</div>
-                                <div class="wi-15">強度: {{ $training->strength }}</div>
-                                <div class="wi-15">重さ: {{ $training->weight }}kg</div>
-                                <div class="wi-15">回数: {{ $training->count }}回</div>
                             </div>
                         </div>
-                    </div>
-                    {{-- スマホ --}}
-                    <div class="pc-none">
-                        <div class="bbd p10">
-                            <div class="flex">
-                                <div class="wi-80">
-                                    <div>日付: {{ $training->created_at->format('Y年m月d日') }}</div>
-                                    <div class="mr10">{{ $training->machine->machine_name }}</div>
-                                    <div>消費カロリー: {{ $training->calorie }}cal</div>
+                        {{-- スマホ --}}
+                        <div class="pc-none">
+                            <div class="bbd p10">
+                                <div class="flex">
+                                    <div class="wi-80">
+                                        <div>日付: {{ $training->created_at->format('Y年m月d日') }}</div>
+                                        <div class="mr10">{{ $training->machine->machine_name }}</div>
+                                        <div>消費カロリー: {{ $training->calorie }}cal</div>
+                                    </div>
+                                    <div class="wi-20">
+                                        <div><img src="{{ $training->machine->img }}" alt=""></div>
+                                    </div>
                                 </div>
-                                <div class="wi-20">
-                                    <div><img src="{{ $training->machine->img }}" alt=""></div>
+                                <div class="flex">
+                                    <div class="flex wi-50">
+                                        <div>時間:{{ $training->minutes }}分</div>
+                                        <div>{{ $training->seconds }}秒</div>
+                                    </div>
+                                    <div class="wi-50">速さ:{{ $training->speed }}km/h</div>
                                 </div>
-                            </div>
-                            <div class="flex">
-                                <div class="flex wi-50">
-                                    <div>時間:{{ $training->minutes }}分</div>
-                                    <div>{{ $training->seconds }}秒</div>
+                                <div class="flex">
+                                    <div class="wi-50">距離:{{ $training->distance }}km</div>
+                                    <div class="wi-50">強度: {{ $training->strength }}</div>
                                 </div>
-                                <div class="wi-50">速さ:{{ $training->speed }}km/h</div>
-                            </div>
-                            <div class="flex">
-                                <div class="wi-50">距離:{{ $training->distance }}km</div>
-                                <div class="wi-50">強度: {{ $training->strength }}</div>
-                            </div>
-                            <div class="flex">
-                                <div class="wi-50">重さ: {{ $training->weight }}kg</div>
-                                <div class="wi-50">回数: {{ $training->count }}回</div>
-                            </div>
+                                <div class="flex">
+                                    <div class="wi-50">重さ: {{ $training->weight }}kg</div>
+                                    <div class="wi-50">回数: {{ $training->count }}回</div>
+                                </div>
 
+                            </div>
                         </div>
+                    @endforeach
+
+                    <div class="pagination-links">
+                        {{ $trainings->links() }}
                     </div>
-                @endforeach
+              
+                @endif
+
+
             </div>
 
             {{-- 今月のトレーニング --}}
@@ -150,7 +159,7 @@
             </div>
 
             {{-- 今までのエリア累計数 --}}
-            <div id="total" class="sp1 area">
+            <div id="total" class="sp-100 area">
                 <div class="f1-5 tcenter">今までのエリア累計数</div>
                 <div class="tcenter mb10">消費カロリー:{{ $calorie }}cal</div>
 
@@ -201,7 +210,7 @@
             </div>
 
             {{-- 今月のエリア累計 --}}
-            <div id="monthTotal" class="sp1 area">
+            <div id="monthTotal" class="sp-100 area">
 
                 <div class="f1-5 tcenter">{{ $monthNumber }}月のエリア累計数</div>
                 <div class="tcenter mb10">消費カロリー:{{ $monthCalorie }}cal</div>
@@ -256,7 +265,7 @@
             </div>
 
             {{-- マシーン別 --}}
-            <div id="machineTotal" class="area">
+            <div id="machineTotal" class="sp-100 area">
                 <div class="f1-5 tcenter mb10">マシーン別<br>トレーニング軌跡</div>
 
                 <div class="grid5 sp-grid3">
