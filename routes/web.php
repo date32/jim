@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', JimTop::class)->name('top');
-Route::get('/test', Test::class)->name('top');
+// Route::get('/test', Test::class)->name('top');
 
 Route::middleware('auth')->middleware('admin')->group(function() {
     Route::get('/admin', Admin::class)->name('admin');
